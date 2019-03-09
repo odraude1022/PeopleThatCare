@@ -16,16 +16,16 @@ ActiveRecord::Schema.define(version: 2019_03_09_170146) do
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string "category_name"
+    t.string "category_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "charities", force: :cascade do |t|
-    t.string "organization_name"
-    t.string "tax_id"
-    t.string "contact_name"
-    t.string "contact_email"
+    t.string "organization_name", null: false
+    t.string "tax_id", null: false
+    t.string "contact_name", null: false
+    t.string "contact_email", null: false
     t.string "twitter_handle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 2019_03_09_170146) do
   end
 
   create_table "news_posts", force: :cascade do |t|
-    t.string "title"
-    t.string "text"
+    t.string "title", null: false
+    t.string "text", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "charity_id"
@@ -59,9 +59,9 @@ ActiveRecord::Schema.define(version: 2019_03_09_170146) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
