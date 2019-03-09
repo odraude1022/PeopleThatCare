@@ -6,4 +6,7 @@ class Charity < ApplicationRecord
   validates :organization_name, presence: true
   validates :tax_id, presence: true
   validates :contact_email, presence: true
+
+  has_secure_password
+  validates :password, presence: true, length: {minimum: 6}
 end

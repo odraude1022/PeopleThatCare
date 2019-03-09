@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_09_170146) do
+ActiveRecord::Schema.define(version: 2019_03_09_185629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,12 +23,13 @@ ActiveRecord::Schema.define(version: 2019_03_09_170146) do
 
   create_table "charities", force: :cascade do |t|
     t.string "organization_name", null: false
-    t.string "tax_id", null: false
+    t.integer "tax_id", null: false
     t.string "contact_name", null: false
     t.string "contact_email", null: false
     t.string "twitter_handle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
   create_table "charity_categories", force: :cascade do |t|
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(version: 2019_03_09_170146) do
     t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
   add_foreign_key "charity_categories", "categories"
