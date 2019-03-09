@@ -10,9 +10,65 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_03_09_170146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "categories", force: :cascade do |t|
+    t.string "category_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "charities", force: :cascade do |t|
+    t.string "organization_name"
+    t.string "tax_id"
+    t.string "contact_name"
+    t.string "contact_email"
+    t.string "twitter_handle"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "charity_categories", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "category_id"
+    t.bigint "charity_id"
+    t.index ["category_id"], name: "index_charity_categories_on_category_id"
+    t.index ["charity_id"], name: "index_charity_categories_on_charity_id"
+  end
+
+  create_table "news_posts", force: :cascade do |t|
+    t.string "title"
+    t.string "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "charity_id"
+    t.index ["charity_id"], name: "index_news_posts_on_charity_id"
+  end
+
+  create_table "user_charities", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "charity_id"
+    t.index ["charity_id"], name: "index_user_charities_on_charity_id"
+    t.index ["user_id"], name: "index_user_charities_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "charity_categories", "categories"
+  add_foreign_key "charity_categories", "charities"
+  add_foreign_key "news_posts", "charities"
+  add_foreign_key "user_charities", "charities"
+  add_foreign_key "user_charities", "users"
 end
