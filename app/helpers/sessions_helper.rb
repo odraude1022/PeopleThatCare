@@ -2,7 +2,7 @@ module SessionsHelper
 
   # Logs in the given user
   def log_in(user)
-    sessions[:user_id] = user.id
+    session[:user_id] = user.id
   end
 
   # Returns the current logged-in user, if he/she exists
@@ -19,7 +19,7 @@ module SessionsHelper
 
   # Logs out user
   def log_out
-    sessions.delete(:user_id)
+    session.delete(:user_id)
     @current_user = nil
   end
 
