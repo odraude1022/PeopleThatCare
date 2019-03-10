@@ -20,8 +20,8 @@ class CharitiesController < ApplicationController
   private
   def charity_params
     params.require(:charity).permit(:organization_name, :tax_id, :contact_name,
-                                    :contact_email, :twitter_handle, :password,
-                                    :password_confirmation)
+                                    :contact_email, :website_url, :twitter_handle,
+                                    :password, :password_confirmation)
   end
 
 end
