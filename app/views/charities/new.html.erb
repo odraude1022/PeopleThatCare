@@ -1,0 +1,36 @@
+<h1>Charities#new</h1>
+<p>Find me in app/views/charities/new.html.erb</p>
+
+<% provide(:title, 'Sign up') %>
+<h1>Sign up</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@charity) do |f| %>
+
+      <%= f.label :organization_name %>
+      <%= f.text_field :organization_name %>
+
+      <%= f.label :tax_id %>
+      <%= f.number_field :tax_id %>
+
+      <%= f.label :contact_name %>
+      <%= f.text_field :contact_name %>
+
+      <%= f.label :contact_email %>
+      <%= f.email_field :contact_email %>
+
+      <%= f.label :twitter_handle %>
+      <%= f.text_field :twitter_handle %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %>
+
+
+      <%= f.submit "Create my account", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
