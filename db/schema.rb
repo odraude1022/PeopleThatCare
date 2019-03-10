@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2019_03_09_185629) do
     t.string "contact_name", null: false
     t.string "contact_email", null: false
     t.string "twitter_handle"
+    t.string "website_url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
