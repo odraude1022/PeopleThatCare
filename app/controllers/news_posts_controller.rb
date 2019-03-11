@@ -8,7 +8,13 @@ class NewsPostsController < ApplicationController
   end
 
   def create
-    @news_post= NewsPost.(news_post_params)
+
+    @news_post= current_charity.news_posts.create(news_post_params)
+    if @news_post.save
+      redirect_to @news_post
+    else
+      render 'new'
+    end
   end
 
   private

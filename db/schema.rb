@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2019_03_09_185629) do
 
   create_table "news_posts", force: :cascade do |t|
     t.string "title", null: false
-    t.string "text", null: false
+    t.text "text", null: false
     t.bigint "charity_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

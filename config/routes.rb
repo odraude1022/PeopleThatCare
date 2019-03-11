@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  get 'news_posts/show'
-  get 'news_posts/new'
+
   resources :users, except: :index
   resources :charities, except: :index
-  resources :news_post, except: :index
+  resources :news_posts
 
   get 'hello_world', to: 'hello_world#index'
 

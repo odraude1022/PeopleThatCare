@@ -1,2 +1,20 @@
 <h1>NewsPosts#new</h1>
 <p>Find me in app/views/news_posts/new.html.erb</p>
+
+<% provide(:title, 'Create a News Post') %>
+<h1>Create a News Post</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@news_post) do |f| %>
+
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.label :text %>
+      <%= f.text_area :text %>
+
+      <%= f.submit "Submit Post", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
