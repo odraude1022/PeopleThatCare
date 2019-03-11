@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2019_03_09_185629) do
     t.string "category_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_name"], name: "index_categories_on_category_name", unique: true
   end
 
   create_table "charities", force: :cascade do |t|
@@ -32,6 +33,9 @@ ActiveRecord::Schema.define(version: 2019_03_09_185629) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.index ["contact_email"], name: "index_charities_on_contact_email", unique: true
+    t.index ["tax_id"], name: "index_charities_on_tax_id", unique: true
+    t.index ["twitter_handle"], name: "index_charities_on_twitter_handle", unique: true
+    t.index ["website_url"], name: "index_charities_on_website_url", unique: true
   end
 
   create_table "charity_categories", force: :cascade do |t|
