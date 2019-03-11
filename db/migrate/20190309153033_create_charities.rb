@@ -10,5 +10,6 @@ class CreateCharities < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :charities, :contact_email, unique: true
   end
 end

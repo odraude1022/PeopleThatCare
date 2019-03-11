@@ -27,16 +27,18 @@ ActiveRecord::Schema.define(version: 2019_03_09_185629) do
     t.string "contact_name", null: false
     t.string "contact_email", null: false
     t.string "twitter_handle"
+    t.string "website_url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.index ["contact_email"], name: "index_charities_on_contact_email", unique: true
   end
 
   create_table "charity_categories", force: :cascade do |t|
+    t.bigint "charity_id", null: false
+    t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "category_id"
-    t.bigint "charity_id"
     t.index ["category_id"], name: "index_charity_categories_on_category_id"
     t.index ["charity_id"], name: "index_charity_categories_on_charity_id"
   end
@@ -44,17 +46,17 @@ ActiveRecord::Schema.define(version: 2019_03_09_185629) do
   create_table "news_posts", force: :cascade do |t|
     t.string "title", null: false
     t.string "text", null: false
+    t.bigint "charity_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "charity_id"
     t.index ["charity_id"], name: "index_news_posts_on_charity_id"
   end
 
   create_table "user_charities", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "charity_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.bigint "charity_id"
     t.index ["charity_id"], name: "index_user_charities_on_charity_id"
     t.index ["user_id"], name: "index_user_charities_on_user_id"
   end
@@ -66,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_03_09_185629) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "charity_categories", "categories"
