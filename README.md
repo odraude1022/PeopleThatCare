@@ -40,3 +40,53 @@ This is a boilerplate Rails project that uses:
 * `heroku buildpacks:add --index 1 heroku/nodejs`
 * `git push heroku master`
 * `heroku run rails db:migrate`
+
+------------------------------------------------------------------------------------------------------------
+
+People That Care - Non-Profit app
+
+### Create Database models
+* `rails g model NAME [field[:type][:index] field[:type][:index]] [options]`
+
+### Create Database Controllers
+* `rails g controller NAME [action action] [options]`
+
+### Authentication users/charities
+* session_controller
+* `  def create
+    var = Var.find_by(email: params[:session][:email].downcase)
+    if var && var.authenticate(params[:session][:password])
+      log_in user
+      redirect_to var
+    else
+      render 'new', alert: 'Invalid email/password'
+    end
+  end
+`
+
+* var_controller
+
+* Function to show the var from the database
+* `def show
+  @var = Var.find(params[:id])
+end`
+
+* Function to a new var at the database
+* `def new
+  @var = Var.new
+end`
+
+* Function to create a var at the database
+* `def create
+  @var = Var.new(user_params)
+  if @var.save
+    log_in @var
+    redirect_to @var
+  else
+    render 'new'
+  end
+end`
+
+### Database initialization
+
+* `rails db:drop db:create db:migrate db:seed`
