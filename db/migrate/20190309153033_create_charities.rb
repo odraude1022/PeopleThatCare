@@ -11,5 +11,8 @@ class CreateCharities < ActiveRecord::Migration[5.2]
       t.timestamps
     end
     add_index :charities, :contact_email, unique: true
+    add_index :charities, :tax_id, unique: true
+    add_index :charities, :twitter_handle, unique: true
+    add_index :charities, :website_url, unique: true
   end
 end
