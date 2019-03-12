@@ -1,7 +1,34 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+User.destroy_all
+
+user_list = [
+  ["Eduardo", "Iglesias", "eriglesias@ufl.edu", "password", "password"],
+  ["Rocio", "De Santiago", "rociodes4@hotmail.com", "password", "password"],
+  ["Thayna", "Santana", "thaynamenezes01@gmail.com", "password", "password"],
+  ["Gina", "De Santiago", "gina.gina@gina.gina", "password", "password"]
+]
+
+Charity.destroy_all
+
+charity_list = [
+  ["St. Jude", 620646012, "Jude", "stjude@stjude.com", "@stjude", "stjude.org", "password", "password"],
+  ["Unesco", 12345, "John", "john@john.com", "@unesco", "unesco.org", "password", "password"],
+  ["Eduardo's Charity", 99999, "Eduardo", "eduardo@charity.com", "@eduardo_charity", "eduardocharity.org", "password", "password"],
+  ["Rocio's Charity", 123344, "Rocio", "rocio@charity.com", "@rocios_charity", "rociocharity.org", "password", "password"],
+  ["Thayna's Charity", 876215, "Thayna", "thayna@charity.com", "@thaynas_charity", "thaynacharity.org", "password", "password"]
+]
+
+Category.destroy_all
+
+category_list = ["Animals", "Education", "Environment", "Health", "Children", "Civil Rights", "Haiti"]
+
+user_list.each do |first_name, last_name, email, password, password_confirmation|
+  User.create(first_name: first_name, last_name: last_name, email: email, password: password, password_confirmation: password_confirmation);
+end
+
+charity_list.each do |organization_name, tax_id, contact_name, contact_email, website_url, twitter_handle, password, password_confirmation|
+  Charity.create(organization_name: organization_name, tax_id: tax_id, contact_name: contact_name, contact_email: contact_email, website_url: website_url, twitter_handle: twitter_handle, password: password, password_confirmation: password_confirmation)
+end
+
+category_list.each do |category_name|
+  Category.create(category_name: category_name)
+end
