@@ -1,4 +1,9 @@
 class NewsPostsController < ApplicationController
+
+  def index
+    @news_posts = NewsPost.all.where(charity_id: current_charity[:id])
+  end
+
   def show
     @news_post = NewsPost.find(params[:id])
   end
