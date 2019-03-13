@@ -10,6 +10,28 @@
   </head>
 
   <body>
+
+  <% if logged_in? %>
+    <nav>
+      <%= link_to "Home ", root_url %> |
+      <%= link_to "Log out", logout_path, method: :delete %>
+    </nav>
+  <% elsif charity_logged_in? %>
+    <nav>
+      <%= link_to "Home ", root_url %> |
+      <%= link_to "Create News Post", new_news_post_path %> |
+      <%= link_to "News Feed", news_posts_path %> |
+      <%= link_to "Log out", charity_logout_path, method: :delete %>
+    </nav>
+  <% else %>
+    <nav>
+      <%= link_to "Home ", root_url %> |
+      <%= link_to "User Sign in", login_path %> |
+      <%= link_to "Charity Sign in", charity_login_path %> |
+      <%= link_to "User Sign up", new_user_path %> |
+      <%= link_to "Charity Sign up", new_charity_path %>
+    </nav>
+  <% end %>
     <%= yield %>
   </body>
 </html>
