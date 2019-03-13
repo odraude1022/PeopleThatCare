@@ -1,8 +1,8 @@
 class CharitiesController < ApplicationController
   before_action :set_charity, only: [:show]
-  before_action :verify_current_charity, only: [:show]
 
   def show
+    @charity = Charity.find(params[:id])
   end
 
   def new
