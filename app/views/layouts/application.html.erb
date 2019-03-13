@@ -14,6 +14,7 @@
   <% if logged_in? %>
     <nav>
       <%= link_to "Home ", root_url %> |
+      <%= link_to "Search for Charities", categories_path %> |
       <%= link_to "Log out", logout_path, method: :delete %>
     </nav>
   <% elsif charity_logged_in? %>
@@ -31,6 +32,14 @@
       <%= link_to "User Sign up", new_user_path %> |
       <%= link_to "Charity Sign up", new_charity_path %>
     </nav>
+  <% end %>
+  <% if alert %>
+    <%= alert %>
+
+  <% end %>
+  <% if notice %>
+    <%= notice %>
+
   <% end %>
     <%= yield %>
   </body>

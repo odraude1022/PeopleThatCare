@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to user
     else
-      render 'new', alert: 'Invalid email/password'
+      redirect_to login_path, alert: "Invalid email/password"
     end
   end
 

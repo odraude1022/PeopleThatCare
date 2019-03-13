@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       log_in @user
       redirect_to @user
     else
-      render 'new'
+      redirect_to new_user_path, alert: @user.errors.full_messages.to_sentence
     end
   end
 

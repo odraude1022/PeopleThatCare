@@ -1,0 +1,9 @@
+<h1><%= @category.category_name %> Charities</h1>
+
+<ul>
+  <% @charity_categories.each do |charity_category| %>
+    <li><%=link_to Charity.find(charity_category.charity_id).organization_name,  Charity.find(charity_category.charity_id) %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Back", categories_path %>

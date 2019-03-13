@@ -1,8 +1,8 @@
 class CharitiesController < ApplicationController
   before_action :set_charity, only: [:show]
-  before_action :verify_current_charity, only: [:show]
 
   def show
+    @charity = Charity.find(params[:id])
   end
 
   def new
@@ -15,7 +15,7 @@ class CharitiesController < ApplicationController
       charity_log_in @charity
       redirect_to @charity
     else
-      render 'new'
+      redirect_to new_charity_path, alert: @charity.errors.full_messages.to_sentence
     end
   end
 

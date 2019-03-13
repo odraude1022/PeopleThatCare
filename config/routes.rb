@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users, except: :index
   resources :charities, except: :index
   resources :news_posts
+  resources :categories, only: [:index, :show]
 
   get 'hello_world', to: 'hello_world#index'
 
