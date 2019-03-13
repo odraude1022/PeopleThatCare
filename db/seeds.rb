@@ -21,6 +21,10 @@ Category.destroy_all
 
 category_list = ["Animals", "Education", "Environment", "Health", "Children", "Civil Rights", "Haiti"]
 
+CharityCategory.destroy_all
+
+charity_category_list = [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]]
+
 user_list.each do |first_name, last_name, email, password, password_confirmation|
   User.create(first_name: first_name, last_name: last_name, email: email, password: password, password_confirmation: password_confirmation);
 end
@@ -31,4 +35,8 @@ end
 
 category_list.each do |category_name|
   Category.create(category_name: category_name)
+end
+
+charity_category_list.each do |charity_id, category_id|
+  CharityCategory.create(charity_id: charity_id, category_id: category_id)
 end
