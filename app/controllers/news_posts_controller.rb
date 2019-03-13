@@ -1,7 +1,7 @@
 class NewsPostsController < ApplicationController
 
   def index
-    @news_posts = NewsPost.all.where(charity_id: current_charity[:id])
+    @news_posts = current_charity.news_posts
   end
 
   def show
@@ -13,7 +13,6 @@ class NewsPostsController < ApplicationController
   end
 
   def create
-
     @news_post= current_charity.news_posts.create(news_post_params)
     if @news_post.save
       redirect_to @news_post
