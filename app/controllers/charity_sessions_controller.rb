@@ -8,7 +8,7 @@ class CharitySessionsController < ApplicationController
       charity_log_in charity
       redirect_to charity
     else
-      render 'new', alert: 'Invalid email/password'
+      redirect_to charity_login_path, alert: 'Invalid email/password'
     end
   end
 

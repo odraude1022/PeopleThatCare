@@ -33,6 +33,14 @@
       <%= link_to "Charity Sign up", new_charity_path %>
     </nav>
   <% end %>
+  <% if alert %>
+    <%= alert %>
+
+  <% end %>
+  <% if notice %>
+    <%= notice %>
+
+  <% end %>
     <%= yield %>
   </body>
 </html>
