@@ -2,7 +2,7 @@
 
 <ul>
   <% @charity_categories.each do |charity_category| %>
-    <li><%=link_to Charity.find(charity_category.charity_id).organization_name,  '/charities/1'%></li>
+    <li><%=link_to Charity.find(charity_category.charity_id).organization_name,  Charity.find(charity_category.charity_id) %></li>
   <% end %>
 </ul>
 
