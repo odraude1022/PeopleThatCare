@@ -11,11 +11,11 @@
 
   <body>
 
-  <% if logged_in? %>
+  <% if user_logged_in? %>
     <nav>
       <%= link_to "Home ", root_url %> |
       <%= link_to "Search for Charities", categories_path %> |
-      <%= link_to "Log out", logout_path, method: :delete %>
+      <%= link_to "Log out", user_logout_path, method: :delete %>
     </nav>
   <% elsif charity_logged_in? %>
     <nav>
@@ -27,7 +27,7 @@
   <% else %>
     <nav>
       <%= link_to "Home ", root_url %> |
-      <%= link_to "User Sign in", login_path %> |
+      <%= link_to "User Sign in", user_login_path %> |
       <%= link_to "Charity Sign in", charity_login_path %> |
       <%= link_to "User Sign up", new_user_path %> |
       <%= link_to "Charity Sign up", new_charity_path %>

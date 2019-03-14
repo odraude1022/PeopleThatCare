@@ -1,20 +1,20 @@
-class SessionsController < ApplicationController
+class UserSessionsController < ApplicationController
   def new
   end
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
-      log_in user
+      user_log_in user
       redirect_to user
     else
-      redirect_to login_path, alert: "Invalid email/password"
+      redirect_to user_login_path, alert: "Invalid email/password"
     end
   end
 
 
   def destroy
-    log_out
+    user_log_out
     redirect_to root_url
   end
 

@@ -1,7 +1,7 @@
-module SessionsHelper
+module UserSessionsHelper
 
   # Logs in the given user
-  def log_in(user)
+  def user_log_in(user)
     session[:user_id] = user.id
   end
 
@@ -13,12 +13,12 @@ module SessionsHelper
   end
 
   # Returns true if the user is logged in, and false if not
-  def logged_in?
+  def user_logged_in?
     !current_user.nil?
   end
 
   # Logs out user
-  def log_out
+  def user_log_out
     session.delete(:user_id)
     @current_user = nil
   end

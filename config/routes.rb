@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   get 'hello_world', to: 'hello_world#index'
 
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  get '/user_login', to: 'user_sessions#new'
+  post '/user_login', to: 'user_sessions#create'
+  delete '/user_logout', to: 'user_sessions#destroy'
 
   get '/charity_login', to: 'charity_sessions#new'
   post '/charity_login', to: 'charity_sessions#create'
