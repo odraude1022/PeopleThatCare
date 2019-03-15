@@ -1,4 +1,16 @@
 <h1>This is <%= @charity.organization_name %>!</h1>
+<% if user_logged_in? %>
+
+<%= link_to "Follow", 
+    follow_index_path(:params => {:charity => @charity}), 
+    {:action => :create, 
+    :method => :post} 
+%>
+
+<% end %>
+
+
+
 <h2>News Posts</h2>
 
 <ul>
