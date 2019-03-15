@@ -3,6 +3,7 @@ class CharitiesController < ApplicationController
 
   def show
     @charity = Charity.find(params[:id])
+    @news_posts = @charity.news_posts
   end
 
   def new

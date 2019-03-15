@@ -1,1 +1,8 @@
 <h1>This is <%= @charity.organization_name %>!</h1>
+<h2>News Posts</h2>
+
+<ul>
+  <% @news_posts.each do |news_post| %>
+    <li> <%= link_to news_post.title, news_post %> </li>
+  <% end %>
+</ul>
