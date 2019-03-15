@@ -1,0 +1,17 @@
+@import 'bootstrap-custom';
+
+@import "users";
+
+ body {
+   margin: 0;
+ }
+
+#main-video {
+  width: 100%;
+  height: 1%;
+}
+
+.logo-home {
+  width: 12rem;
+  height: 3rem;
+}
