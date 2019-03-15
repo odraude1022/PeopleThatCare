@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '~> 2.5'
 
+gem 'jquery-rails'
+gem 'bootstrap', '~> 4.3.1'
 gem 'hirb'
 gem 'faker'
 gem 'react_on_rails'
