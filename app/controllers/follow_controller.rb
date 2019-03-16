@@ -8,12 +8,19 @@ class FollowController < ApplicationController
     if @user_charity.save
       redirect_back fallback_location: "/", notice: "Now Following #{@charity.organization_name}"
     else
-      edirect_back fallback_location: "/", alert: "Follow failed"
+      redirect_back fallback_location: "/", alert: "Follow failed"
     end
   end
 
   def index
+  end
 
+  def destroy
+    @charity_id = allowed_params[:charity].to_i
+    @charity = Charity.find(@charity_id)
+    @user = current_user
+    UserCharity.where(user_id: @user.id).where(charity_id: @charity_id).destroy_all
+    redirect_back fallback_location: "/", alert: "You are unfollowing #{@charity.organization_name}"
   end
 
   private

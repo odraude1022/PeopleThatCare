@@ -1,18 +1,22 @@
 <h1>This is <%= @charity.organization_name %>!</h1>
+
 <% if user_logged_in? %>
-
-<%= link_to "Follow", 
-    follow_index_path(:params => {:charity => @charity}), 
-    {:action => :create, 
-    :method => :post} 
-%>
-
+  <% if UserCharity.where(user_id: current_user.id).where(charity_id: @charity.id).count == 0 %>
+    <%= link_to "Follow", 
+        follow_index_path(:params => {:charity => @charity}), 
+        {:action => :create, 
+        :method => :post} 
+    %>
+  <% else %>
+    <%= link_to "Unfollow", 
+        follow_path(:params => {:charity => @charity}), 
+        {:action => :destroy, 
+        :method => :delete} 
+    %>
+  <% end %>
 <% end %>
 
-
-
 <h2>News Posts</h2>
-
 <ul>
   <% @news_posts.each do |news_post| %>
     <li> <%= link_to news_post.title, news_post %> </li>
