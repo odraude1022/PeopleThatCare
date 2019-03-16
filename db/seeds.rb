@@ -25,6 +25,10 @@ CharityCategory.destroy_all
 
 charity_category_list = [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]]
 
+NewsPost.destroy_all
+
+news_post_list = [['Hi', 'hihihihihiihih', 1], ['bi', 'hihihihihiihih', 1], ['ci', 'hihihihihiihih', 2], ['Die', 'hihihihihiihih', 2], ['Die', 'hihihihihiihih', 3], ['Die', 'hihihihihiihih', 3], ['ei', 'hihihihihiihih', 4], ['fi', 'hihihihihiihih', 4], ['gi', 'hihihihihiihih', 5], ['ji', 'hihihihihiihih', 5]]
+
 user_list.each do |first_name, last_name, email, password, password_confirmation|
   User.create(first_name: first_name, last_name: last_name, email: email, password: password, password_confirmation: password_confirmation);
 end
@@ -39,4 +43,8 @@ end
 
 charity_category_list.each do |charity_id, category_id|
   CharityCategory.create(charity_id: charity_id, category_id: category_id)
+end
+
+news_post_list.each do |title, text, charity_id|
+  NewsPost.create(title: title, text: text, charity_id: charity_id)
 end
