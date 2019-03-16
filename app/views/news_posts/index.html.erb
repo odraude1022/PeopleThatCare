@@ -1,5 +1,11 @@
-<h1>News Feed!</h1>
+<% require 'link_thumbnailer' %>
+<% object = LinkThumbnailer.generate('https://www.independent.co.uk/life-style/dating/valentines-day-donate-charity-share-love-flowers-ice-cream-underwear-a8773986.html') %> 
 
+<h1>News Feed!</h1>
+<h2> Object title should print here </h2>
+<h2> <%= object.title %> </h2>
+<img src=<%= object.favicon %> /> 
+<img src=<%= object.images.first.src.to_s %> />
 
 <ul>
   <% @news_posts.each do |post| %>
