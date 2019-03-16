@@ -13,6 +13,17 @@ class FollowController < ApplicationController
   end
 
   def index
+    if user_logged_in?
+      links = UserCharity.where(user_id: current_user)
+      @charities = []
+      links.map do |link|
+        @charities.push(Charity.find(link.charity_id))
+      end
+      
+
+    elsif charity_logged_in?
+
+    end
   end
 
   def destroy

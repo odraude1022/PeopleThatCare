@@ -1,0 +1,8 @@
+<h1>Following:</h1>
+
+<ul>
+  <% @charities.each do |charity| %>
+    <li><%= link_to charity.organization_name, charity %></li>
+  <% end %>
+
+</ul>
