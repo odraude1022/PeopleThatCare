@@ -2,6 +2,7 @@ class User < ApplicationRecord
   attr_accessor :remember_token
 
   has_many :user_charities ,dependent: :destroy
+  has_many :charities, through: :user_charities
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: true
@@ -37,4 +38,9 @@ class User < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+  def follows?(charity)
+    charities.where(id: charity.id).present?
+  end
+
 end
