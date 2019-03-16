@@ -4,6 +4,22 @@
 
  body {
    margin: 0;
+   background-color: #F8F9FA;
+   font-family: 'Open Sans', sans-serif;
+ }
+
+.titles {
+  text-align: center;
+  color: #686869;
+  border-bottom: 3px dashed #0ABAB6;
+  margin: 1rem 2rem;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.5rem;
+ }
+
+ .logo-home {
+   width: 12rem;
+   height: 3rem;
  }
 
 #main-video {
@@ -11,7 +27,36 @@
   height: 1%;
 }
 
-.logo-home {
-  width: 12rem;
-  height: 3rem;
+#home-img-wrap {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 4rem;
+  justify-content: center;
+  margin: 2rem;
+}
+
+.image-login {
+  width: 550px;
+  height: 280px;
+  border-radius: 15px;
+}
+
+.image-login:hover {
+  box-shadow: 10px 10px 5px #AAAAAA;
+}
+
+.mission-p {
+  color: #8D8D8E;
+  margin: 2rem 5rem;
+}
+
+#people-that-care {
+  color: #0ABAB6;
+}
+
+#quote {
+  font-size: 2rem;
+  margin: 1rem 3rem;
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
 }
