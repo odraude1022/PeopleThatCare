@@ -1,3 +1,5 @@
+require 'faker'
+
 User.destroy_all
 
 user_list = [
@@ -6,6 +8,9 @@ user_list = [
   ["Thayna", "Santana", "thaynamenezes01@gmail.com", "password", "password"],
   ["Gina", "De Santiago", "gina.gina@gina.gina", "password", "password"]
 ]
+20.times do
+  user_list.push([Faker::Name.first_name, Faker::Name.last_name, Faker::Internet.email, 'password', 'password' ])
+end
 
 Charity.destroy_all
 
@@ -23,11 +28,9 @@ category_list = ["Animals", "Education", "Environment", "Health", "Children", "C
 
 CharityCategory.destroy_all
 
-charity_category_list = [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]]
 
 NewsPost.destroy_all
 
-news_post_list = [['Hi', 'hihihihihiihih', 1], ['bi', 'hihihihihiihih', 1], ['ci', 'hihihihihiihih', 2], ['Die', 'hihihihihiihih', 2], ['Die', 'hihihihihiihih', 3], ['Die', 'hihihihihiihih', 3], ['ei', 'hihihihihiihih', 4], ['fi', 'hihihihihiihih', 4], ['gi', 'hihihihihiihih', 5], ['ji', 'hihihihihiihih', 5]]
 
 user_list.each do |first_name, last_name, email, password, password_confirmation|
   User.create(first_name: first_name, last_name: last_name, email: email, password: password, password_confirmation: password_confirmation);
@@ -37,8 +40,19 @@ charity_list.each do |organization_name, tax_id, contact_name, contact_email, we
   Charity.create(organization_name: organization_name, tax_id: tax_id, contact_name: contact_name, contact_email: contact_email, website_url: website_url, twitter_handle: twitter_handle, password: password, password_confirmation: password_confirmation)
 end
 
+news_post_list = []
+
+50.times do
+  news_post_list.push([Faker::Book.title, Faker::Books::Lovecraft.paragraph, Charity.all.sample.id])
+end
+
 category_list.each do |category_name|
   Category.create(category_name: category_name)
+end
+
+charity_category_list = []
+10.times do
+  charity_category_list.push([Charity.all.sample.id, Category.all.sample.id])
 end
 
 charity_category_list.each do |charity_id, category_id|
@@ -47,4 +61,15 @@ end
 
 news_post_list.each do |title, text, charity_id|
   NewsPost.create(title: title, text: text, charity_id: charity_id)
+end
+
+follow_list = []
+
+User.all.each do |user|
+  4.times do
+    begin
+      UserCharity.create(user_id: user.id, charity_id: Charity.all.sample.id)
+    rescue
+    end
+  end
 end
