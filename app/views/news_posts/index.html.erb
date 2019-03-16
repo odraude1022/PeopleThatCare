@@ -3,6 +3,6 @@
 
 <ul>
   <% @news_posts.each do |post| %>
-    <li><%= link_to post.title, post %></li>
+    <li><%= link_to post.title, post %> By: <%= link_to post.charity.organization_name, post.charity %></li>
   <% end %>
 </ul>

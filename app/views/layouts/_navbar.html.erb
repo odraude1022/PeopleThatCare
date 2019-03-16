@@ -14,8 +14,17 @@
           </li>
 
           <li class="nav-item">
+            <%= link_to "News Feed", news_posts_path, class: "nav-link" %>
+          </li>
+
+          <li class="nav-item">
             <%= link_to "Search for Charities", categories_path, class: "nav-link" %>
           </li>
+
+          <li class="nav-item">
+            <%= link_to "Charities Following", follow_index_path, class: "nav-link" %>
+          </li>
+
 
           <li class="nav-item">
             <%= link_to "Log out", user_logout_path, method: :delete, class: "nav-link" %>

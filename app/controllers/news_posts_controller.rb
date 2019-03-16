@@ -1,7 +1,21 @@
 class NewsPostsController < ApplicationController
 
   def index
-    @news_posts = current_charity.news_posts
+    if charity_logged_in?
+      @news_posts = current_charity.news_posts
+    elsif user_logged_in?
+      user_charities = current_user.user_charities
+      @charities = []
+      user_charities.map do |user_charity|
+        charity = Charity.find(user_charity.charity_id)
+        @charities.push(charity)
+      end
+      @news_posts = []
+      @charities.map do |charity|
+        @news_posts.push(charity.news_posts.to_a)
+      end
+      @news_posts.flatten!
+    end
   end
 
   def show
