@@ -3,15 +3,13 @@
 <% if user_logged_in? %>
   <% unless current_user.follows?(@charity) %>
     <%= link_to "Follow",
-        follow_index_path(:params => {:charity => @charity}),
-        {:action => :create,
-        :method => :post}
+        user_charity_path(user_id: current_user.id,id:  @charity.id),
+        method: :put
     %>
   <% else %>
     <%= link_to "Unfollow",
-        follow_path(:params => {:charity => @charity}),
-        {:action => :destroy,
-        :method => :delete}
+        user_charity_path(user_id: current_user.id, id: @charity.id),
+        method: :delete
     %>
   <% end %>
 <% end %>

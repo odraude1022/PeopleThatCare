@@ -2,11 +2,14 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :home, only: :index
-  resources :users, except: :index
+  resources :users, except: :index do
+    scope module: :users do
+      resources :charities, only: [:update, :destroy, :index]
+    end
+  end
   resources :charities, except: :index
   resources :news_posts
   resources :categories, only: [:index, :show]
-  resources :follow, only: [:index, :create, :destroy]
 
   get 'hello_world', to: 'hello_world#index'
 
