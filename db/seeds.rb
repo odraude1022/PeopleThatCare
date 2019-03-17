@@ -57,7 +57,10 @@ charity_category_list = []
 end
 
 charity_category_list.each do |charity_id, category_id|
-  CharityCategory.create(charity_id: charity_id, category_id: category_id)
+  begin
+    CharityCategory.create(charity_id: charity_id, category_id: category_id)
+  rescue
+  end
 end
 
 news_post_list.each do |title, text, url, image, charity_id|

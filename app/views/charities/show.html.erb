@@ -20,3 +20,12 @@
     <li> <%= link_to news_post.title, news_post %> </li>
   <% end %>
 </ul>
+
+<% if charity_logged_in? %>
+  <h2>Categories</h2>
+    <ul>
+      <% @charity.categories.each do |category| %>
+        <li> <%= category.category_name %> </li>
+      <% end %>
+    </ul>
+<% end %>
