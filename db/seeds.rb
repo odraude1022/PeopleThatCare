@@ -36,7 +36,7 @@ user_list.each do |first_name, last_name, email, password, password_confirmation
   User.create(first_name: first_name, last_name: last_name, email: email, password: password, password_confirmation: password_confirmation);
 end
 
-charity_list.each do |organization_name, tax_id, contact_name, contact_email, website_url, twitter_handle, password, password_confirmation|
+charity_list.each do |organization_name, tax_id, contact_name, contact_email, twitter_handle, website_url, password, password_confirmation|
   Charity.create(organization_name: organization_name, tax_id: tax_id, contact_name: contact_name, contact_email: contact_email, website_url: website_url, twitter_handle: twitter_handle, password: password, password_confirmation: password_confirmation)
 end
 
