@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
-
+  has_one_attached :avatar
   has_many :user_charities, dependent: :destroy
   has_many :charities, through: :user_charities
   validates :first_name, presence: true

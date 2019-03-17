@@ -1,5 +1,9 @@
 <h1><%= @charity.organization_name %>!</h1>
-
+<% if @charity.avatar.attached? %>
+  <%= image_tag @charity.avatar %>
+<% else %>
+  <%= image_tag '/gina.jpg' %>
+<% end %>
 <% if user_logged_in? %>
   <% unless current_user.follows?(@charity) %>
     <%= link_to "Follow",
