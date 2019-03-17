@@ -1,6 +1,6 @@
 class Charity < ApplicationRecord
   attr_accessor :remember_token
-
+  has_one_attached :avatar
   has_many :news_posts, dependent: :destroy
   has_many :user_charities, dependent: :destroy
   has_many :charity_categories, dependent: :destroy

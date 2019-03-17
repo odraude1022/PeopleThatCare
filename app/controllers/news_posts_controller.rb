@@ -35,17 +35,25 @@ class NewsPostsController < ApplicationController
       title = params[:title]
       text = params[:text]
       @news_post = current_charity.news_posts.create(title: title, text: text, charity_id: charity_id)
+      if @news_post.save
+        redirect_to @news_post
+      else
+        render 'new'
+      end
     else
-      object = LinkThumbnailer.generate(url)
-      title = object.title
-      image = object.images.first.src.to_s
-      text = url
+      begin 
+        object = LinkThumbnailer.generate(url)
+        title = object.title
+        image = object.images.first.src.to_s
+        text = url
+      rescue 
+      end
       @news_post = current_charity.news_posts.create(title: title, text: text, image: image, charity_id: charity_id)
-    end
-    if @news_post.save
-      redirect_to @news_post
-    else
-      render 'new'
+      if @news_post.save
+        redirect_to @news_post
+      else
+        redirect_back fallback_location: "/", alert: "Invalid url, please try again"
+      end
     end
   end
 

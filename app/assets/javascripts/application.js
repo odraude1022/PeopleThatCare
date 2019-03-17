@@ -18,3 +18,12 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(":checkbox").click(function() {
+  $length = $(":checkbox").length();
+  if ($length > 2) {
+    $(":checkbox:checked").attr("disabled", true);
+  } else {
+    $(":checkbox").removeAttr("disabled");
+  }
+});
