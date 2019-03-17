@@ -1,14 +1,17 @@
-<% require 'link_thumbnailer' %>
-<% object = LinkThumbnailer.generate('https://www.independent.co.uk/life-style/dating/valentines-day-donate-charity-share-love-flowers-ice-cream-underwear-a8773986.html') %> 
-
 <h1>News Feed!</h1>
-<h2> Object title should print here </h2>
-<h2> <%= object.title %> </h2>
-<img src=<%= object.favicon %> /> 
-<img src=<%= object.images.first.src.to_s %> />
 
 <ul>
   <% @news_posts.each do |post| %>
-    <li><%= link_to post.title, post %> By: <%= link_to post.charity.organization_name, post.charity %></li>
+    <li><%= link_to post.title, post %> By: <%= link_to post.charity.organization_name, post.charity %>
+        <% if post.image.present? %>
+          <%= image_tag post.image, width: "100", height: "60" %>
+        <% else %>   
+          <%= link_to post.image do %>
+          <%= image_tag "https://images.freeimages.com/images/large-previews/25d/eagle-1523807.jpg", width: "100", height: "60" %>
+          <% end %>
+        <% end %>
+    </li>
   <% end %>
 </ul>
+
+
