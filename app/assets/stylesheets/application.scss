@@ -8,6 +8,7 @@
    font-family: 'Open Sans', sans-serif;
  }
 
+// ============ Home page ============
 .titles {
   text-align: center;
   color: #686869;
@@ -17,7 +18,7 @@
   font-size: 1.5rem;
  }
 
- .logo-home {
+.logo-home {
    width: 12rem;
    height: 3rem;
  }
@@ -60,3 +61,30 @@
   text-align: center;
   font-family: 'Quicksand', sans-serif;
 }
+
+.footer-wrap {
+  background-color: #0ABAB6;
+  color: #686869;
+  padding: 1rem 3rem;
+}
+
+.footer-wrap a {
+  color: #686869;
+}
+
+.footer-navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+
+.thanks-footer, .get-involved {
+  padding-left: 5rem;
+  font-size: .9rem;
+}
+
+.footer-end {
+  text-align: center;
+  font-size: .7rem;
+}
+// ============ Log in ============
