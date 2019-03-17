@@ -36,14 +36,15 @@ user_list.each do |first_name, last_name, email, password, password_confirmation
   User.create(first_name: first_name, last_name: last_name, email: email, password: password, password_confirmation: password_confirmation);
 end
 
-charity_list.each do |organization_name, tax_id, contact_name, contact_email, website_url, twitter_handle, password, password_confirmation|
+charity_list.each do |organization_name, tax_id, contact_name, contact_email, twitter_handle, website_url, password, password_confirmation|
   Charity.create(organization_name: organization_name, tax_id: tax_id, contact_name: contact_name, contact_email: contact_email, website_url: website_url, twitter_handle: twitter_handle, password: password, password_confirmation: password_confirmation)
 end
 
 news_post_list = []
+news_post_images = ["https://images.freeimages.com/images/small-previews/615/corcovado-sunset-1527899.jpg", "https://images.freeimages.com/images/small-previews/277/doggy-1382866.jpg", "https://images.freeimages.com/images/small-previews/f2c/effi-1-1366221.jpg", "https://images.freeimages.com/images/small-previews/6d5/lake-at-the-cottage-1372381.jpg", "https://images.freeimages.com/images/small-previews/035/young-golden-retriever-1404848.jpg"]
 
 50.times do
-  news_post_list.push([Faker::Book.title, Faker::Books::Lovecraft.paragraph, Charity.all.sample.id])
+  news_post_list.push([Faker::Book.title, Faker::Books::Lovecraft.paragraph, "https://www.google.com", news_post_images.sample, Charity.all.sample.id])
 end
 
 category_list.each do |category_name|
@@ -56,11 +57,14 @@ charity_category_list = []
 end
 
 charity_category_list.each do |charity_id, category_id|
-  CharityCategory.create(charity_id: charity_id, category_id: category_id)
+  begin
+    CharityCategory.create(charity_id: charity_id, category_id: category_id)
+  rescue
+  end
 end
 
-news_post_list.each do |title, text, charity_id|
-  NewsPost.create(title: title, text: text, charity_id: charity_id)
+news_post_list.each do |title, text, url, image, charity_id|
+  NewsPost.create(title: title, text: text, url: url, image: image, charity_id: charity_id)
 end
 
 follow_list = []

@@ -1,3 +1,4 @@
+require 'link_thumbnailer'
 class NewsPostsController < ApplicationController
 
   def index
@@ -27,7 +28,20 @@ class NewsPostsController < ApplicationController
   end
 
   def create
-    @news_post= current_charity.news_posts.create(news_post_params)
+    params = news_post_params
+    url = params[:url]
+    charity_id = params[:charity_id]
+    if url == ''
+      title = params[:title]
+      text = params[:text]
+      @news_post = current_charity.news_posts.create(title: title, text: text, charity_id: charity_id)
+    else
+      object = LinkThumbnailer.generate(url)
+      title = object.title
+      image = object.images.first.src.to_s
+      text = url
+      @news_post = current_charity.news_posts.create(title: title, text: text, image: image, charity_id: charity_id)
+    end
     if @news_post.save
       redirect_to @news_post
     else
@@ -38,7 +52,7 @@ class NewsPostsController < ApplicationController
   private
 
   def news_post_params
-    params.require(:news_post).permit(:title, :text, :charity_id)
+    params.require(:news_post).permit(:title, :text, :url, :image, :charity_id)
   end
 
 end
