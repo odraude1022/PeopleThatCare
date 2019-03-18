@@ -2,12 +2,19 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '~> 2.5'
+# for thumbnails to appear on links in news posts
+gem 'link_thumbnailer'
 
 gem 'jquery-rails'
+
 gem 'bootstrap', '~> 4.3.1'
+
 gem 'hirb'
+
 gem 'faker'
+
 gem 'react_on_rails'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use postgresql as the database for Active Record

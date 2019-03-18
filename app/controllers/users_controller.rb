@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :verify_current_user, only: [:show]
 
   def show
+    @charities = current_user.charities
   end
 
   def new
@@ -19,6 +20,26 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit 
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    params = user_params
+    first_name = params[:first_name]
+    last_name = params[:last_name]
+    email = params[:email]
+    @user.update_attribute(:first_name, first_name)
+    @user.update_attribute(:last_name, last_name)
+    @user.update_attribute(:email, email)
+    if @user.save
+      p 'yay'
+    else
+      p @user.errors.full_messages.to_sentence
+    end
+  end
+
   private
 
   def set_user
@@ -31,7 +52,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email,
-                                 :password, :password_confirmation)
+                                 :password, :password_confirmation, :avatar)
   end
 
 end

@@ -1,1 +1,40 @@
 <h1>Hello <%= current_user.first_name %>!</h1>
+<% if current_user.avatar.attached? %>
+  <%= image_tag current_user.avatar %>
+<% else %>
+  <%= image_tag '/gina.jpg' %>
+<% end %>
+
+<h2> User Profile - <%= link_to "Edit", edit_user_path %></h2>
+
+<p> <%=current_user.first_name %> <%=current_user.last_name %> </p>
+<p> <%=current_user.email %> </p>
+
+<h2>Charities Following:</h2>
+
+<ul>
+  <% @charities.each do |charity| %>
+    <li>
+      <%= link_to charity.organization_name, charity %>
+        <% unless current_user.follows?(charity) %>
+        <%= link_to " | Follow",
+            user_charity_path(user_id: current_user.id,id:  charity.id),
+            method: :put
+        %>
+        <% else %>
+        <%= link_to " | Unfollow",
+            user_charity_path(user_id: current_user.id, id: charity.id),
+            method: :delete
+        %>
+        <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<h2> Rocio's baby (She wants to get rid of it) </h2>
+  <ul> 
+    <li> You will be able to edit this </li>
+    <li> I think </li>
+    <li> I'm not quite sure actually </li>
+    <li> What should go here again? </li>
+  </ul>

@@ -1,8 +1,17 @@
 <h1>News Feed!</h1>
 
-
 <ul>
   <% @news_posts.each do |post| %>
-    <li><%= link_to post.title, post %> By: <%= link_to post.charity.organization_name, post.charity %></li>
+    <li><%= link_to post.title, post %> By: <%= link_to post.charity.organization_name, post.charity %>
+        <% if post.image.present? %>
+          <%= image_tag post.image, src: post.image, onerror: 'this.error=null;this.src="/gina.jpg"', width: "100", height: "60" %>
+        <% else %>   
+          <%= link_to post.image do %>
+          <%= image_tag "https://images.freeimages.com/images/large-previews/25d/eagle-1523807.jpg", width: "100", height: "60" %>
+          <% end %>
+        <% end %>
+    </li>
   <% end %>
 </ul>
+
+

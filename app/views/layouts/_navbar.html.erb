@@ -22,12 +22,11 @@
           </li>
 
           <li class="nav-item">
-            <%= link_to "Charities Following", user_charities_path(user_id: current_user.id), class: "nav-link" %>
+            <%= link_to "Log out", user_logout_path, method: :delete, class: "nav-link" %>
           </li>
 
-
           <li class="nav-item">
-            <%= link_to "Log out", user_logout_path, method: :delete, class: "nav-link" %>
+            <%= link_to "Profile", current_user, class: "nav-link" %>
           </li>
 
         </ul>
@@ -59,6 +58,10 @@
 
         <li class="nav-item">
           <%= link_to "Log out", charity_logout_path, method: :delete, class: "nav-link" %>
+        </li>
+        
+        <li class="nav-item">
+          <%= link_to "Profile", current_charity, class: "nav-link" %>
         </li>
 
       </ul>
