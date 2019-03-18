@@ -34,7 +34,7 @@ class NewsPostsController < ApplicationController
     if url == ''
       title = params[:title]
       text = params[:text]
-      @news_post = current_charity.news_posts.create(title: title, text: text, charity_id: charity_id)
+      @news_post = current_charity.news_posts.new(title: title, text: text, charity_id: charity_id)
       if @news_post.save
         redirect_to @news_post
       else
@@ -48,7 +48,7 @@ class NewsPostsController < ApplicationController
         text = url
       rescue 
       end
-      @news_post = current_charity.news_posts.create(title: title, text: text, image: image, charity_id: charity_id)
+      @news_post = current_charity.news_posts.new(title: title, text: text, image: image, charity_id: charity_id)
       if @news_post.save
         redirect_to @news_post
       else

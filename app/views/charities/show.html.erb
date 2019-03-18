@@ -2,7 +2,10 @@
 <% if @charity.avatar.attached? %>
   <%= image_tag @charity.avatar, width: "200", height: "200" %>
 <% else %>
-  <%= image_tag '/gina.jpg', width: "200", height: "200"  %>
+  <%= image_tag '/gina.jpg',
+      width: "200",
+      height: "200",
+      style: "object-fit: cover;" %>
 <% end %>
 <% if user_logged_in? %>
   <% unless current_user.follows?(@charity) %>
