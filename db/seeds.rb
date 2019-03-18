@@ -48,10 +48,6 @@ end
 news_post_list = []
 news_post_images = ["https://images.freeimages.com/images/small-previews/615/corcovado-sunset-1527899.jpg", "https://images.freeimages.com/images/small-previews/277/doggy-1382866.jpg", "https://images.freeimages.com/images/small-previews/f2c/effi-1-1366221.jpg", "https://images.freeimages.com/images/small-previews/6d5/lake-at-the-cottage-1372381.jpg", "https://images.freeimages.com/images/small-previews/035/young-golden-retriever-1404848.jpg"]
 
-50.times do
-  news_post_list.push([Faker::Book.title, Faker::Books::Lovecraft.paragraph, "https://www.google.com", news_post_images.sample, Charity.all.sample.id])
-end
-
 category_list.each do |category_name|
   Category.create(category_name: category_name)
 end
@@ -65,6 +61,11 @@ charity_category_list.each do |charity_id, category_id|
   begin
     CharityCategory.create(charity_id: charity_id, category_id: category_id)
   rescue
+  end
+end
+Charity.all.each do |charity|
+  50.times do
+    news_post_list.push([Faker::Book.title, Faker::Books::Lovecraft.paragraph, "https://www.google.com", news_post_images.sample, charity.id])
   end
 end
 
