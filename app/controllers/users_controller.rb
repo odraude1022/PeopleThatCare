@@ -30,6 +30,7 @@ class UsersController < ApplicationController
       redirect_to user, notice: "Successfully updated profile"
     else
       redirect_to user, alert: charity.errors.full_messages.to_sentence
+    end
   end
 
   private
