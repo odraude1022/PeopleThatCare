@@ -24,7 +24,12 @@ charity_list = [
 
 Category.destroy_all
 
-category_list = ["Animals", "Education", "Environment", "Health", "Children", "Civil Rights", "Haiti"]
+category_list = ["Arts and Culture", "Advocacy and Human Rights",
+                "Bullying and Violence", "Children and Family",
+                "Disaster Recovery", "Education and Training", "Elderly",
+                "Environment and Sustainability", "Hunger and Poverty",
+                "Health", "Research", "International Aid", "LGBT",
+                "Military and Police", "Religion", "STEM", "Women"]
 
 CharityCategory.destroy_all
 
