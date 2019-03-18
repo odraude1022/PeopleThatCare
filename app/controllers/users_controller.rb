@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit 
+  def edit
     @user = current_user
   end
 
@@ -33,11 +33,6 @@ class UsersController < ApplicationController
     @user.update_attribute(:first_name, first_name)
     @user.update_attribute(:last_name, last_name)
     @user.update_attribute(:email, email)
-    if @user.save
-      p 'yay'
-    else
-      p @user.errors.full_messages.to_sentence
-    end
   end
 
   private

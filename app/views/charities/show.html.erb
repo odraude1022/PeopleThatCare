@@ -1,8 +1,8 @@
-<h1><%= @charity.organization_name %>!</h1>
+<h1><%= @charity.organization_name %></h1>
 <% if @charity.avatar.attached? %>
-  <%= image_tag @charity.avatar %>
+  <%= image_tag @charity.avatar, width: "200", height: "200" %>
 <% else %>
-  <%= image_tag '/gina.jpg' %>
+  <%= image_tag '/gina.jpg', width: "200", height: "200"  %>
 <% end %>
 <% if user_logged_in? %>
   <% unless current_user.follows?(@charity) %>
@@ -19,6 +19,7 @@
 <% end %>
 
 <% if charity_logged_in? %>
+  <h2>Charity Profile- <%= link_to "Edit", edit_charity_path %></h2>
   <p>Organization Name: <%= current_charity.organization_name %></p>
   <p>TaxID: <%= current_charity.tax_id %></p>
   <p>Contact Name: <%= current_charity.contact_name %></p>
