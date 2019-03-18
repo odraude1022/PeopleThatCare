@@ -29,8 +29,10 @@
       <%= f.label :password_confirmation, "Confirmation", class: "mt-3"%>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= f.label :avatar %>
-      <%= f.file_field :avatar %>
+      <div class="fileUpload btn btn-secondary mt-3">
+        <%= f.label :avatar, "Choose a picture", class: "mb-0"%>
+        <%= f.file_field :avatar, class: "upload" %>
+      </div>
 
       <%= f.label 'Categories' %>
       <%= f.collection_check_boxes :categories, @categories, :id, :category_name %>
