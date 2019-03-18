@@ -1,0 +1,107 @@
+// ============ Home page ============
+.titles {
+  text-align: center;
+  color: #686869;
+  border-bottom: 3px dashed #0ABAB6;
+  margin: 1rem 2rem;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.5rem;
+ }
+
+.logo-home {
+   width: 12rem;
+   height: 3rem;
+ }
+
+#main-video {
+  width: 100%;
+  height: 1%;
+}
+
+#home-img-wrap {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 4rem;
+  justify-content: center;
+  margin: 2rem;
+}
+
+.image-login {
+  width: 550px;
+  height: 280px;
+  border-radius: 15px;
+}
+
+.image-login:hover {
+  box-shadow: 10px 10px 5px #AAAAAA;
+}
+
+.mission-p {
+  color: #8D8D8E;
+  margin: 2rem 5rem;
+  text-align: justify;
+}
+
+#people-that-care {
+  color: #0ABAB6;
+}
+
+#quote {
+  font-size: 2rem;
+  margin: 1rem 3rem;
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.footer-wrap {
+  background-color: #0ABAB6;
+  color: #686869;
+  padding: 1rem 3rem;
+}
+
+.footer-wrap a {
+  color: #686869;
+}
+
+.footer-navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+
+.thanks-footer, .get-involved {
+  padding-left: 5rem;
+  font-size: .9rem;
+}
+
+.footer-end {
+  text-align: center;
+  font-size: .7rem;
+}
+
+// ============ Mobile Home ============
+
+@media all and (max-width: 550px) {
+  #home-img-wrap {
+    display: grid;
+    grid-template-columns: repeat(1, auto)
+  }
+  .mission-p {
+    font-size: .9rem;
+  }
+
+  #quote {
+    font-size: 1.5rem;
+  }
+
+  .image-login {
+    width: 380px;
+    height: 230px;
+    border-radius: 15px;
+  }
+
+  .thanks-footer, .get-involved {
+    padding-left: 2rem;
+    font-size: .7rem;
+  }
+}
