@@ -25,14 +25,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = current_user
-    params = user_params
-    first_name = params[:first_name]
-    last_name = params[:last_name]
-    email = params[:email]
-    @user.update_attribute(:first_name, first_name)
-    @user.update_attribute(:last_name, last_name)
-    @user.update_attribute(:email, email)
+    user = current_user
+    if user.update(user_params)
+      redirect_to user, notice: "Successfully updated profile"
+    else
+      redirect_to user, alert: charity.errors.full_messages.to_sentence
   end
 
   private

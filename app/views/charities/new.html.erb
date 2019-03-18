@@ -32,8 +32,8 @@
       <%= f.label :avatar %>
       <%= f.file_field :avatar %>
 
-      <%#= f.label 'Categories' %>
-      <%#= f.collection_check_boxes :categories, @categories, :id, :category_name %>
+      <%= f.label 'Categories' %>
+      <%= f.collection_check_boxes :categories, @categories, :id, :category_name %>
 
 
       <%= f.submit "Create my account", class: "btn btn-success btn-lg btn-block mt-3" %>

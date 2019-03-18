@@ -13,7 +13,8 @@ class Charity < ApplicationRecord
   validates :website_url, uniqueness: true
 
   has_secure_password
-  validates :password, presence: true, length: {minimum: 6}
+  validates :password, length: { minimum: 6 }, allow_nil: true
+  # https://quickleft.com/blog/rails-tip-validating-users-with-has_secure_password/
 
   # Returns the hash digest of the given string.
   def Charity.digest(string)
