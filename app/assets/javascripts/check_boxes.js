@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).on("ready turbolinks:load", function(){
   $('.category_check_box').on('click', function(){
     var checked_count = $('.category_check_box:checked').length
     if (checked_count >= 3) {
