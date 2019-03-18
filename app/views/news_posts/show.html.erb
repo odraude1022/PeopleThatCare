@@ -3,4 +3,8 @@
 <p> <%= simple_format(@news_post.text) %> </p>
 <%= image_tag @news_post.image, 
       src: @news_post.image, 
-      onerror: 'this.error=null;this.src="/gina.jpg"' %>
+      onerror: 'this.error=null;this.src="/news_post.png"', 
+			width: "350", 
+			height: "300", 
+			style: “object-fit:cover;”
+%>
