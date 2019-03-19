@@ -1,26 +1,27 @@
 <div class="news-feed-wrap">
 <h1 class="title">News Feed</h1>
-  <div class="news-feed-articles">
-    <div class="articles">
-      <ul class="articles-border">
-        <% @news_posts.each do |post| %>
-          <li><%= link_to post.title, post, class: "title-news-feed" %>
-            <p class="author">Author: <%= link_to post.charity.organization_name, post.charity %></p>
-            <div class="img-text-news-wrap">
-            <% if post.image.present? %>
-              <%= image_tag post.image, src: post.image, onerror: 'this.error=null;this.src="/gina.jpg"', class: "img-news-post" %>
-            <% else %>
-              <%= link_to post.image do %>
-                <%= image_tag "https://images.freeimages.com/images/large-previews/25d/eagle-1523807.jpg", class: "img-news-post" %>
-              <% end %>
-            <% end %>
 
-            </div>
-            <div class="text-news-wrap">
-              <span><%= post.text %></span>
-            </div>
+<div class="news-feed-articles">
+  <div class="articles">
+    <ul class="articles-border">
+      <% @news_posts.each do |post| %>
+        <li><%= link_to post.title, post, class: "title-news-feed" %>
+          <p class="author">Author: <%= link_to post.charity.organization_name, post.charity %></p>
+          <div class="img-text-news-wrap">
+          <% if post.image.present? %>
+            <%= image_tag post.image, src: post.image, onerror: 'this.error=null;this.src="/gina.jpg"', class: "img-news-post" %>
+          <% else %>
+            <%= link_to post.image do %>
+              <%= image_tag "https://images.freeimages.com/images/large-previews/25d/eagle-1523807.jpg", class: "img-news-post" %>
+            <% end %>
           <% end %>
-          </li>
+
+          </div>
+          <div class="text-news-wrap">
+            <span><%= post.text %></span>
+          </div>
+        <% end %>
+        </li>
       </ul>
       <%= will_paginate @news_posts %>
     </div>

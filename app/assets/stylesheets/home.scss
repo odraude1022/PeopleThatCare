@@ -81,6 +81,13 @@
 
 // ============ Mobile Home ============
 
+@media all and (max-width: 1050px) {
+  #home-img-wrap {
+    display: grid;
+    grid-template-columns: repeat(1, auto)
+  }
+}
+
 @media all and (max-width: 550px) {
   #home-img-wrap {
     display: grid;

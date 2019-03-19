@@ -1,0 +1,88 @@
+// ========= News Feed User ==========
+
+.title {
+  text-align: center;
+  color: #686869;
+  border-top: 3px dashed #0ABAB6;
+  border-bottom: 3px dashed #0ABAB6;
+  margin: 1rem 2rem 2rem;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2.5rem;
+ }
+
+.news-feed-articles {
+  width: 80%;
+  margin: auto;
+}
+
+.articles {
+  width: 100%;
+}
+
+.articles a {
+  color: #0ABAB6;
+}
+
+.articles li {
+  color: #686869;
+  list-style: none;
+  padding: 1rem;
+  margin: .3rem;
+  border: 1px solid #AAAAAA;
+  border-radius: 5px;
+  background-color: #DEF5F1;
+}
+
+.title-news-feed {
+  font-size: 1.5rem;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.author {
+  font-size: .7rem;
+}
+
+.img-news-post {
+  height: 300px;
+  width: 300px;
+}
+
+.img-text-news-wrap {
+  display: inline-block;
+}
+
+.text-news-wrap {
+  display: inline-block;
+  width: 60%;
+  margin: 1rem;
+  text-align: justify;
+}
+
+// ========= Mobile News Post ==========
+
+@media all and (max-width: 1154px) {
+  .text-news-wrap {
+    display: inline-block;
+    align-content: center;
+    width: 40%;
+    margin: 1rem;
+    text-align: justify;
+  }
+}
+
+@media all and (max-width: 800px) {
+  .text-news-wrap {
+    display: inline-block;
+    width: 80%;
+    margin: 1rem;
+    text-align: justify;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .img-news-post {
+    height: 150px;
+    width: 230px;
+    margin: auto;
+  }
+}
