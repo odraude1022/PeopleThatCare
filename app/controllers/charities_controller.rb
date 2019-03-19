@@ -3,19 +3,15 @@ class CharitiesController < ApplicationController
   before_action :set_charities, only: [:index]
 
   def index
+    page        = (params[:page] || 1).to_i
+    per_page    = 5
+    total_pages = (@news_posts.count.to_f / per_page).ceil
+    total_pages = 1 if total_pages.zero?
+    @news_posts = @news_posts.paginate(page: page, per_page: per_page)
     respond_to do |format|
-      format.html do
-        page = (params[:page] || 1).to_i
-        per_page = 10
-        @charities = @charities.paginate(page: page, per_page: per_page)
-      end
+      format.html
       format.json do
-        page        = (params[:page] || 1).to_i
-        per_page    = 10
-        total_pages = (@charities.count.to_f / per_page).ceil
-        total_pages = 1 if total_pages.zero?
-        @charities  = @charities.paginate(page: page, per_page: per_page)
-        render json: { charities: @charities, page: page, totalPages: total_pages }
+        render json: { news_posts: @news_posts, page: page, totalPages: total_pages }
       end
     end
   end
