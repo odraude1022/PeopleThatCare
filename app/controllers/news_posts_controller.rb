@@ -4,7 +4,7 @@ class NewsPostsController < ApplicationController
 
   def index
     page        = (params[:page] || 1).to_i
-    per_page    = 5
+    per_page    = 10
     total_pages = (@news_posts.count.to_f / per_page).ceil
     total_pages = 1 if total_pages.zero?
     @news_posts = @news_posts.paginate(page: page, per_page: per_page)
@@ -61,9 +61,6 @@ class NewsPostsController < ApplicationController
       @news_posts = current_charity.news_posts
     elsif user_logged_in?
       @news_posts = NewsPost.where(charity: current_user.charities)
-=======
-      @news_posts = NewsPost.where(id: @news_posts.map(&:id))
->>>>>>> fixed pagination for news posts
     end
   end
 
