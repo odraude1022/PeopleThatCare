@@ -1,7 +1,11 @@
-<h1><%= @news_post.title %></h1>
-
-<p> <%= simple_format(@news_post.text) %> </p>
-<%= image_tag @news_post.image ? @news_post.image : "/news_post.png",
-		width: "350",
-		height: "300",
-		style: "object-fit:cover;" %>
+<div class="news-post-wrap">
+	<h1 class="title"><%= @news_post.title %></h1>
+	<div class="news-post">
+		<div class="text-news-p">
+			<p> <%= simple_format(@news_post.text) %> </p>
+		</div>
+		<div class="img-wrap">
+			<%= image_tag @news_post.image ? @news_post.image : "/news_post.png", class: "post-img" %>
+		</div>
+	</div>
+</div>
