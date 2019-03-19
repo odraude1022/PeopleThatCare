@@ -1,19 +1,24 @@
 <h1>Edit Profile</h1>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-6 col-md-offset-3 m-3">
     <%= form_for(@user) do |f| %>
 
       <%= f.label :first_name %>
-      <%= f.text_field :first_name %>
+      <%= f.text_field :first_name, class: "form-control" %>
 
       <%= f.label :last_name %>
-      <%= f.text_field :last_name %>
+      <%= f.text_field :last_name, class: "form-control" %>
 
       <%= f.label :email %>
-      <%= f.email_field :email %>
+      <%= f.email_field :email, class: "form-control" %>
 
-      <%= f.submit "Save Changes", class: "btn btn-primary" %>
+      <div class="fileUpload btn btn-secondary mt-3">
+        <%= f.label :avatar, "Change picture", class: "mb-0"%>
+        <%= f.file_field :avatar, class: "upload" %>
+      </div>
+
+      <%= f.submit "Save Changes", class: "btn btn-primary btn-lg btn-block mt-3 mb-3" %>
     <% end %>
   </div>
 </div>
