@@ -1,3 +1,5 @@
+include 'twitter'
+
 class Charity < ApplicationRecord
   attr_accessor :remember_token
   has_one_attached :avatar
@@ -49,6 +51,12 @@ class Charity < ApplicationRecord
   # Forgets a user.
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  def get_tweets
+    return client.search("from:#{self.twitter_handle}", result_type: "recent").take(5).map do |tweet|
+      tweet.text
+    end
   end
 
 end
