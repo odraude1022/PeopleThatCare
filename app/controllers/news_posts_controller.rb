@@ -3,18 +3,14 @@ class NewsPostsController < ApplicationController
   before_action :set_posts, only: [:index]
 
   def index
+    page        = (params[:page] || 1).to_i
+    per_page    = 5
+    total_pages = (@news_posts.count.to_f / per_page).ceil
+    total_pages = 1 if total_pages.zero?
+    @news_posts = @news_posts.paginate(page: page, per_page: per_page)
     respond_to do |format|
-      format.html do
-        page = (params[:page] || 1).to_i
-        per_page = 5
-        @news_posts = @news_posts.paginate(page: page, per_page: per_page)
-      end
+      format.html
       format.json do
-        page        = (params[:page] || 1).to_i
-        per_page    = 5
-        total_pages = (@news_posts.count.to_f / per_page).ceil
-        total_pages = 1 if total_pages.zero?
-        @news_posts      = @news_posts.paginate(page: page, per_page: per_page)
         render json: { news_posts: @news_posts, page: page, totalPages: total_pages }
       end
     end
