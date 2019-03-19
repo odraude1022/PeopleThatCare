@@ -35,8 +35,9 @@
       </div>
 
       <%= f.label 'Categories' %>
-      <%= f.collection_check_boxes :categories, @categories, :id, :category_name %>
-
+      <%= f.collection_check_boxes :categories, @categories, :id, :category_name do |box| %>
+        <%= box.label %> <%= box.check_box class: "category_check_box" %>
+      <% end %>
 
       <%= f.submit "Create my account", class: "btn btn-success btn-lg btn-block mt-3" %>
     <% end %>
