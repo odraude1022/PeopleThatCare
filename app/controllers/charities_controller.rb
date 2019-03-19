@@ -4,7 +4,7 @@ class CharitiesController < ApplicationController
 
   def index
     page        = (params[:page] || 1).to_i
-    per_page    = 5
+    per_page    = 10
     total_pages = (@news_posts.count.to_f / per_page).ceil
     total_pages = 1 if total_pages.zero?
     @news_posts = @news_posts.paginate(page: page, per_page: per_page)
