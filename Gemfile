@@ -5,6 +5,7 @@ ruby '~> 2.5'
 # for thumbnails to appear on links in news posts
 gem 'link_thumbnailer'
 
+gem 'dotenv'
 gem 'jquery-rails'
 
 gem 'bootstrap', '~> 4.3.1'
