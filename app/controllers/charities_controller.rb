@@ -6,7 +6,7 @@ class CharitiesController < ApplicationController
     respond_to do |format|
       format.html do
         page = (params[:page] || 1).to_i
-        per_page = 5
+        per_page = 10
         @charities = @charities.paginate(page: page, per_page: per_page)
       end
       format.json do
