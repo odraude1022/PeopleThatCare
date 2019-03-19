@@ -22,6 +22,15 @@ charity_list = [
   ["Thayna's Charity", 876215, "Thayna", "thayna@charity.com", "@thaynas_charity", "thaynacharity.org", "password", "password"]
 ]
 
+50.times do
+  arr = [Faker::Company.name, rand(100000000..999999999), Faker::Name.name, Faker::Internet.email]
+  arr.push("@" + arr[0].gsub(/\s+/, "").gsub(',', ''))
+  arr.push(arr[0].gsub(/\s+/, "").gsub(',', '') + ".org")
+  arr.push("password", "password")
+  p arr
+  charity_list.push(arr)
+end
+
 Category.destroy_all
 
 category_list = ["Arts and Culture", "Advocacy and Human Rights",
