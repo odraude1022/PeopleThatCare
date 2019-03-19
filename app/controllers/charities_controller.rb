@@ -1,5 +1,24 @@
 class CharitiesController < ApplicationController
   before_action :set_charity, only: [:show]
+  before_action :set_charities, only: [:index]
+
+  def index
+    respond_to do |format|
+      format.html do
+        page = (params[:page] || 1).to_i
+        per_page = 5
+        @charities = @charities.paginate(page: page, per_page: per_page)
+      end
+      format.json do
+        page        = (params[:page] || 1).to_i
+        per_page    = 10
+        total_pages = (@charities.count.to_f / per_page).ceil
+        total_pages = 1 if total_pages.zero?
+        @charities  = @charities.paginate(page: page, per_page: per_page)
+        render json: { charities: @charities, page: page, totalPages: total_pages }
+      end
+    end
+  end
 
   def show
     @charity = Charity.find(params[:id])
@@ -52,6 +71,16 @@ class CharitiesController < ApplicationController
 
   private
 
+  def set_charities
+    @charities = Charity.all
+    @categories = Category.all
+    category = params[:category]
+    if category && category != ''
+      @charities = @charities.category_filtered(category)
+    end
+    @charities = @charities.search(params[:term])
+  end
+
   def set_charity
     @charity = Charity.find(params[:id])
   end
@@ -63,7 +92,7 @@ class CharitiesController < ApplicationController
   def charity_params
     params.require(:charity).permit(:organization_name, :tax_id, :contact_name,
                                     :contact_email, :website_url, :twitter_handle,
-                                    :password, :password_confirmation, :avatar)
+                                    :password, :password_confirmation, :avatar, :category)
   end
 
   def charity_category_params

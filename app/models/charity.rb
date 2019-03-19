@@ -12,6 +12,13 @@ class Charity < ApplicationRecord
   validates :twitter_handle, uniqueness: true
   validates :website_url, uniqueness: true
 
+  scope :category_filtered,    ->   (category){ joins("join charity_categories on charities.id = charity_categories.charity_id")
+                                    .joins("join categories on categories.id = charity_categories.category_id")
+                                    .where("categories.category_name = ?", category) }
+  scope :search,    ->  (term) { where("organization_name ilike ?", "%#{term}%") }
+
+
+
   has_secure_password
   validates :password, length: { minimum: 6 }, allow_nil: true
   # https://quickleft.com/blog/rails-tip-validating-users-with-has_secure_password/

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       resources :charities, only: [:update, :destroy, :index]
     end
   end
-  resources :charities, except: :index
+  resources :charities
   resources :news_posts
   resources :categories, only: [:index, :show]
 
