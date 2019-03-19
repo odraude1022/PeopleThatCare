@@ -27,7 +27,6 @@ charity_list = [
   arr.push("@" + arr[0].gsub(/\s+/, "").gsub(',', ''))
   arr.push(arr[0].gsub(/\s+/, "").gsub(',', '') + ".org")
   arr.push("password", "password")
-  p arr
   charity_list.push(arr)
 end
 
@@ -62,8 +61,13 @@ category_list.each do |category_name|
 end
 
 charity_category_list = []
-10.times do
-  charity_category_list.push([Charity.all.sample.id, Category.all.sample.id])
+Charity.all.each do |charity|
+  3.times do
+    begin
+      charity_category_list.push([charity.id, Category.all.sample.id])
+    rescue
+    end
+  end
 end
 
 charity_category_list.each do |charity_id, category_id|
