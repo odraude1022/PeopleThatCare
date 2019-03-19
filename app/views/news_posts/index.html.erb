@@ -1,21 +1,29 @@
 <div class="news-feed-wrap">
 
-<h1 class="titles">News Feed</h1>
+<h1 class="title">News Feed</h1>
 
-  <div class="news-feed-articles">
-    <ul>
-      <% @news_posts.each do |post| %>
-        <li><%= link_to post.title, post %>
-          <p><b>Author</b>   <%= link_to post.charity.organization_name, post.charity %></p>
-        </li>
-        <% if post.image.present? %>
-          <%= image_tag post.image, src: post.image, onerror: 'this.error=null;this.src="/gina.jpg"', width: "100", height: "60" %>
-        <% else %>
-          <%= link_to post.image do %>
-            <%= image_tag "https://images.freeimages.com/images/large-previews/25d/eagle-1523807.jpg", width: "100", height: "60" %>
+<div class="news-feed-articles">
+    <div class="articles">
+      <ul class="articles-border">
+        <% @news_posts.each do |post| %>
+          <li><%= link_to post.title, post, class: "title-news-feed" %>
+            <p class="author">Author: <%= link_to post.charity.organization_name, post.charity %></p>
+            <div class="img-text-news-wrap">
+            <% if post.image.present? %>
+              <%= image_tag post.image, src: post.image, onerror: 'this.error=null;this.src="/gina.jpg"', class: "img-news-post" %>
+            <% else %>
+              <%= link_to post.image do %>
+                <%= image_tag "https://images.freeimages.com/images/large-previews/25d/eagle-1523807.jpg", class: "img-news-post" %>
+              <% end %>
+            <% end %>
+
+            </div>
+            <div class="text-news-wrap">
+              <span><%= post.text %></span>
+            </div>
           <% end %>
-        <% end %>
-      <% end %>
-    </ul>
+          </li>
+      </ul>
+    </div>
   </div>
 </div>

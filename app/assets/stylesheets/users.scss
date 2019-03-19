@@ -24,8 +24,58 @@
 
 // ========= News Feed User ==========
 
+.title {
+  text-align: center;
+  color: #686869;
+  border-top: 3px dashed #0ABAB6;
+  border-bottom: 3px dashed #0ABAB6;
+  margin: 1rem 2rem 2rem;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2.5rem;
+ }
+
 .news-feed-articles {
- width: 80%;
- display: flex;
- justify-content: center;
+  width: 80%;
+  margin: auto;
+}
+
+.articles {
+  width: 100%;
+}
+
+.articles a {
+  color: #0ABAB6;
+}
+
+.articles li {
+  border: 1px solid #AAAAAA;
+  list-style: none;
+  padding: 1rem;
+  margin: .3rem;
+  border-radius: 5px;
+}
+
+.title-news-feed {
+  font-size: 1.5rem;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.author {
+  font-size: .7rem;
+}
+
+.img-news-post {
+  height: 300px;
+  width: 300px;
+}
+
+.img-text-news-wrap {
+  display: inline-block;
+}
+
+.text-news-wrap {
+  display: inline-block;
+  width: 60%;
+  margin: 1rem;
+  text-align: justify;
 }
