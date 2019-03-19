@@ -24,7 +24,7 @@
 
       <%= f.label 'Categories' %>
       <%= f.collection_check_boxes :categories, @categories, :id, :category_name do |box| %>
-        <%= box.label %> <%= box.check_box checked: @charity.categories.pluck(:id).include?(box.value) ? true : false  %>
+        <%= box.label %> <%= box.check_box class: "category_check_box", checked: @charity.categories.pluck(:id).include?(box.value)%>
       <% end %>
 
       <%= f.label :avatar %>

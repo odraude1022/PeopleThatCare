@@ -1,5 +1,4 @@
 <div class="news-feed-wrap">
-
 <h1 class="title">News Feed</h1>
 
 <div class="news-feed-articles">
@@ -24,6 +23,7 @@
         <% end %>
         </li>
       </ul>
+      <%= will_paginate @news_posts %>
     </div>
   </div>
 </div>
