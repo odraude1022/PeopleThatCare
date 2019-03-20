@@ -27,3 +27,7 @@ $(":checkbox").click(function() {
     $(":checkbox").removeAttr("disabled");
   }
 });
+
+$( window ).on("turbolinks:before-visit", function() {
+  $("#main-video").remove();
+});
