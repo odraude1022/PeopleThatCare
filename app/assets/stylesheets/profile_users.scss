@@ -1,0 +1,49 @@
+.profile-wrap {
+  margin: 2rem;
+}
+
+.img-profile {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 100px;
+  display: inline-block;
+  border: 2px solid #184741;
+}
+
+.title-profile {
+  color: #0ABAB6;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2.5rem;
+  display: inline-block;
+  margin-left: 1rem;
+}
+
+.title-profile-h2 {
+  color: #0ABAB6;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.5rem;
+}
+
+.title-profile-h2 a {
+  color: #2E7D72;
+}
+
+.info-profile {
+  margin-left: 14rem;
+}
+
+//====== mobile profile ======
+
+@media all and (max-width: 700px) {
+  .img-profile-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .info-profile {
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+  }
+}
