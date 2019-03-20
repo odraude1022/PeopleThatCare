@@ -1,42 +1,37 @@
-<div class="profile-wrap">
-  <div class="img-profile-wrap">
-  <% if current_user.avatar.attached? %>
-    <%= image_tag current_user.avatar, class: "img-profile"  %>
-  <% else %>
-    <%= image_tag '/gina.jpg', class: "img-profile"   %>
-  <% end %>
-  <h1 class="title-profile">Hello <%= current_user.first_name %>!</h1>
-  </div>
-  <div class="info-profile">
-    <div class= "other-info">
-      <h2 class="title-profile-h2"> User Profile - <%= link_to "Edit", edit_user_path %></h2>
+<div class="profile-wrap-wrap">
+  <div class="profile-wrap">
+    <div class="img-profile-wrap">
+    <% if current_user.avatar.attached? %>
+      <%= image_tag current_user.avatar, class: "img-profile"  %>
+    <% else %>
+      <%= image_tag '/gina.jpg', class: "img-profile"   %>
+    <% end %>
+    <h1 class="title-profile">Hello <%= current_user.first_name %>!</h1>
+    </div>
+    <div class="info-profile">
+      <div class= "other-info">
+        <h2 class="title-profile-h2"> User Profile - <%= link_to "Edit", edit_user_path %></h2>
 
-      <p> <%=current_user.first_name %> <%=current_user.last_name %> </p>
-      <p> <%=current_user.email %> </p>
+        <p class="text-profile"> <%=current_user.first_name %> <%=current_user.last_name %> </p>
+        <p class="text-profile"> <%=current_user.email %> </p>
+      </div>
+      <div class= "other-info">
+        <h2 class="title-profile-h2">Charities Following:</h2>
 
-      <h2 class="title-profile-h2">Charities Following:</h2>
+        <ul>
+          <% @charities.each do |charity| %>
+            <li class="text-profile">
+              <%= link_to charity.organization_name, charity %>
 
-      <ul>
-        <% @charities.each do |charity| %>
-          <li>
-            <%= link_to charity.organization_name, charity %>
-              <% unless current_user.follows?(charity) %>
-                <%= link_to user_charity_path(user_id: current_user.id,id:  charity.id),
-                    method: :put do
-                %>
-                <i class="fas fa-user-plus"></i>
+                  <%= link_to user_charity_path(user_id: current_user.id, id: charity.id),
+                      method: :delete do
+                  %>
+                  <i class="fas fa-user-minus"></i>
                 <% end %>
-
-                <% else %>
-                <%= link_to user_charity_path(user_id: current_user.id, id: charity.id),
-                    method: :delete do
-                %>
-                <i class="fas fa-user-minus"></i>
-                <% end %>
-              <% end %>
-          </li>
-        <% end %>
-      </ul>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

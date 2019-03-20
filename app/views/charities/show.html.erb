@@ -1,48 +1,56 @@
-<h1><%= @charity.organization_name %></h1>
-<% if @charity.avatar.attached? %>
-  <%= image_tag @charity.avatar, width: "200", height: "200" %>
-<% else %>
-  <%= image_tag '/gina.jpg',
-      width: "200",
-      height: "200",
-      style: "object-fit: cover;" %>
-<% end %>
-<% if user_logged_in? %>
-  <% unless current_user.follows?(@charity) %>
-    <%= link_to "Follow",
-        user_charity_path(user_id: current_user.id,id:  @charity.id),
-        method: :put
-    %>
-  <% else %>
-    <%= link_to "Unfollow",
-        user_charity_path(user_id: current_user.id, id: @charity.id),
-        method: :delete
-    %>
-  <% end %>
-<% end %>
-
-<% if charity_logged_in? %>
-  <h2>Charity Profile- <%= link_to "Edit", edit_charity_path %></h2>
-  <p>Organization Name: <%= current_charity.organization_name %></p>
-  <p>TaxID: <%= current_charity.tax_id %></p>
-  <p>Contact Name: <%= current_charity.contact_name %></p>
-  <p>Contact email: <%= current_charity.contact_email %></p>
-  <p>Twitter handle: <%= current_charity.twitter_handle %></p>
-  <p>Website: <%= current_charity.website_url %></p>
-<% end %>
-
-<h2>News Posts</h2>
-<ul>
-  <% @news_posts.each do |news_post| %>
-    <li> <%= link_to news_post.title, news_post %> </li>
-  <% end %>
-</ul>
-
-<% if charity_logged_in? %>
-  <h2>Categories</h2>
-    <ul>
-      <% @charity.categories.each do |category| %>
-        <li> <%= category.category_name %> </li>
+<div class="profile-wrap-wrap">
+  <div class="profile-wrap">
+    <div class="img-profile-wrap">
+      <% if @charity.avatar.attached? %>
+        <%= image_tag @charity.avatar, class: "img-profile"  %>
+      <% else %>
+        <%= image_tag '/gina.jpg', class: "img-profile"  %>
       <% end %>
-    </ul>
-<% end %>
+      <h1 class="title-profile"><%= @charity.organization_name %></h1>
+      <% if user_logged_in? %>
+        <% unless current_user.follows?(@charity) %>
+          <%= link_to user_charity_path(user_id: current_user.id,id:  @charity.id),
+              method: :put do %>
+                <i class="fas fa-user-plus bigger"></i>
+          <% end %>
+        <% else %>
+          <%= link_to user_charity_path(user_id: current_user.id, id: @charity.id),
+              method: :delete do %>
+                <i class="fas fa-user-minus bigger"></i>
+          <%end%>
+        <% end %>
+      <% end %>
+    </div>
+      <div class="info-profile">
+        <div class= "other-info">
+          <% if charity_logged_in? %>
+            <h2 class="title-profile-h2">Charity Profile- <%= link_to "Edit", edit_charity_path %></h2>
+            <p class="text-profile">Organization Name: <%= current_charity.organization_name %></p>
+            <p class="text-profile">TaxID: <%= current_charity.tax_id %></p>
+            <p class="text-profile">Contact Name: <%= current_charity.contact_name %></p>
+            <p class="text-profile">Contact email: <%= current_charity.contact_email %></p>
+            <p class="text-profile">Twitter handle: <%= current_charity.twitter_handle %></p>
+            <p class="text-profile">Website: <%= current_charity.website_url %></p>
+          <% end %>
+        </div>
+        <div class= "other-info">
+          <h2 class="title-profile-h2">News Posts</h2>
+          <ul>
+            <% @news_posts.each do |news_post| %>
+              <li class="text-profile"> <%= link_to news_post.title, news_post %> </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class= "other-info">
+          <% if charity_logged_in? %>
+            <h2 class="title-profile-h2">Categories</h2>
+              <ul>
+                <% @charity.categories.each do |category| %>
+                  <li class="text-profile"> <%= category.category_name %> </li>
+                <% end %>
+              </ul>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>
