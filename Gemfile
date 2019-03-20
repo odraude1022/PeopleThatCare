@@ -6,6 +6,10 @@ ruby '~> 2.5'
 gem 'link_thumbnailer'
 
 gem 'dotenv'
+gem 'dotenv-rails', groups: [:development, :test]
+
+gem 'twitter'
+
 gem 'jquery-rails'
 
 gem 'bootstrap', '~> 4.3.1'

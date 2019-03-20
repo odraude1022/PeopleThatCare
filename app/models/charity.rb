@@ -1,5 +1,3 @@
-include 'twitter'
-
 class Charity < ApplicationRecord
   attr_accessor :remember_token
   has_one_attached :avatar
@@ -18,8 +16,6 @@ class Charity < ApplicationRecord
                                     .joins("join categories on categories.id = charity_categories.category_id")
                                     .where("categories.category_name = ?", category) }
   scope :search,    ->  (term) { where("organization_name ilike ?", "%#{term}%") }
-
-
 
   has_secure_password
   validates :password, length: { minimum: 6 }, allow_nil: true
@@ -52,11 +48,17 @@ class Charity < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
-
+  
+  #Tweets by username
   def get_tweets
-    return client.search("from:#{self.twitter_handle}", result_type: "recent").take(5).map do |tweet|
+    $TWITTER_CLIENT.search("from:#{self.twitter_handle}", result_type: "recent").take(5).map do |tweet|
       tweet.text
     end
+  end
+
+  def twitter_profile
+    @user_timeline = $TWITTER_CLIENT.user_timeline
+    @home_timeline = $TWITTER_CLIENT.home_timeline
   end
 
 end

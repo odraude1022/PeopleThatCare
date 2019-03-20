@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :news_posts
   resources :categories, only: [:index, :show]
 
+  resources :twitter
+  get '/twitter_profile' => "twitter#twitter_profile"
+
   get 'hello_world', to: 'hello_world#index'
 
   get '/user_login', to: 'user_sessions#new'
