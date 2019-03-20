@@ -58,6 +58,27 @@
   text-align: justify;
 }
 
+// ============= Show post =============
+
+.text-news-p {
+  color: #686869;
+  padding: 1rem 4rem;
+  text-align: justify;
+}
+
+.img-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.post-img {
+  height: 17rem;
+  width: 32rem;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
 // ========= Mobile News Post ==========
 
 @media all and (max-width: 1154px) {
@@ -79,10 +100,17 @@
   }
 }
 
-@media all and (max-width: 480px) {
+@media all and (max-width: 520px) {
   .img-news-post {
     height: 150px;
     width: 230px;
     margin: auto;
+  }
+
+  .post-img {
+    height: 12rem;
+    width: 24rem;
+    object-fit: cover;
+    border-radius: 15px;
   }
 }

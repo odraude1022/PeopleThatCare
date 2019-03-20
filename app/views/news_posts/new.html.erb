@@ -1,23 +1,20 @@
-<h1>NewsPosts#new</h1>
-<p>Find me in app/views/news_posts/new.html.erb</p>
-
 <% provide(:title, 'Create a News Post') %>
-<h1>Create a News Post</h1>
+<h1 class="title">Create a News Post</h1>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-6 col-md-offset-3 mr-5 ml-5">
     <%= form_for(@news_post) do |f| %>
 
-      <%= f.label :title %>
-      <%= f.text_field :title %>
+      <%= f.label :title, class: "mt-3" %>
+      <%= f.text_field :title, class: "form-control"  %>
 
-      <%= f.label :text %>
-      <%= f.text_area :text %>
+      <%= f.label :text, class: "mt-3" %>
+      <%= f.text_area :text, class: "form-control"  %>
 
-      <%= f.label :url %>
-      <%= f.url_field :url %>
+      <%= f.label :url, class: "mt-3" %>
+      <%= f.url_field :url, class: "form-control" %>
 
-      <%= f.submit "Submit Post", class: "btn btn-primary" %>
+      <%= f.submit "Submit Post", class: "btn btn-success btn-lg btn-block mt-3 mb-5" %>
     <% end %>
   </div>
 </div>
