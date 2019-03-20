@@ -17,6 +17,18 @@ class Charity < ApplicationRecord
                                     .where("categories.category_name = ?", category) }
   scope :search,    ->  (term) { where("organization_name ilike ?", "%#{term}%") }
 
+  def as_json(options={})
+    {
+      id:                   id,
+      organization_name:    organization_name,
+      tax_id:               tax_id,
+      contact_name:         contact_name,
+      contact_email:        contact_email,
+      twitter_handle:       twitter_handle,
+      website_url:          website_url,
+      location:             "/charities/#{id}"
+    }
+  end
 
 
   has_secure_password
