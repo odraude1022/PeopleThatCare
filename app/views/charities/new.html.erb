@@ -1,5 +1,5 @@
 <% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
+<h1 class="title">Sign up</h1>
 
 <div class="row form-group">
   <div class="col-md-6 col-md-offset-3 m-3">
@@ -34,7 +34,7 @@
         <%= box.label %> <%= box.check_box class: "category_check_box", checked: @charity.categories.pluck(:id).include?(box.value)%>
       <% end %>
       <br>
-      
+
       <div class="fileUpload btn btn-secondary mt-3">
         <%= f.label :avatar, "Choose a picture", class: "mb-0"%>
         <%= f.file_field :avatar, class: "upload" %>
