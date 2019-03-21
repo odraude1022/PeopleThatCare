@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '~> 2.5'
 # for thumbnails to appear on links in news posts
 gem 'link_thumbnailer'
-
+gem 'stripe'
 gem 'dotenv'
 gem 'dotenv-rails', groups: [:development, :test]
 
