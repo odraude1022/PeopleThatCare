@@ -11,7 +11,7 @@ class CharitiesController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        render json: { news_posts: @news_posts, page: page, totalPages: total_pages }
+        render json: { charities: @charities, page: page, totalPages: total_pages }
       end
     end
   end
@@ -74,7 +74,9 @@ class CharitiesController < ApplicationController
     if category && category != ''
       @charities = @charities.category_filtered(category)
     end
-    @charities = @charities.search(params[:term])
+    if(params[:term] && params[:term] != '')
+      @charities = @charities.search(params[:term])
+    end
   end
 
   def set_charity

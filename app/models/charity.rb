@@ -17,6 +17,20 @@ class Charity < ApplicationRecord
                                     .where("categories.category_name = ?", category) }
   scope :search,    ->  (term) { where("organization_name ilike ?", "%#{term}%") }
 
+  def as_json(options={})
+    {
+      id:                   id,
+      organization_name:    organization_name,
+      tax_id:               tax_id,
+      contact_name:         contact_name,
+      contact_email:        contact_email,
+      twitter_handle:       twitter_handle,
+      website_url:          website_url,
+      location:             "/charities/#{id}"
+    }
+  end
+
+
   has_secure_password
   validates :password, length: { minimum: 6 }, allow_nil: true
   # https://quickleft.com/blog/rails-tip-validating-users-with-has_secure_password/
@@ -48,7 +62,7 @@ class Charity < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
-  
+
   #Tweets by username
   def get_tweets
     $TWITTER_CLIENT.search("from:#{self.twitter_handle}", result_type: "recent").take(5).map do |tweet|
