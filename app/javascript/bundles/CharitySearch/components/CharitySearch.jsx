@@ -33,7 +33,6 @@ export default class CharitySearch extends Component {
     let data = axios.get(`/charities.json?term=${query}&category=${category}&page=${page}`).then(res => {
       this.setState({charities: res.data.charities, page: res.data.page, totalPages: res.data.totalPages, category: category, query: query})
     })
-
   }
 
   handleSubmit = (event) => {
