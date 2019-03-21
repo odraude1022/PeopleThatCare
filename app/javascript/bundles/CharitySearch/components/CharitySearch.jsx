@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Charity from './Charity'
 import Categories from './Categories'
+import Pagination from './Pagination'
 
 export default class CharitySearch extends Component {
   state = {
@@ -9,6 +10,7 @@ export default class CharitySearch extends Component {
           query: '',
           charities: [],
           page: 1,
+          totalPages: 1,
           categories: []
           }
 
@@ -19,7 +21,7 @@ export default class CharitySearch extends Component {
 
   handleCategorySelect = (category) => {
     this.setState({category: category})
-    this.fetchCharities()
+    this.fetchCharities('', category, 1)
   }
 
   fetchCategories = () => {
@@ -28,25 +30,30 @@ export default class CharitySearch extends Component {
     })
   }
 
-  fetchCharities = () => {
-    let { category, query } = this.state
-    let data = axios.get(`/charities.json?term=${query}&category=${category}`).then(res => {
-      this.setState({charities: res.data.charities})
+  fetchCharities = (query, category, page) => {
+    let data = axios.get(`/charities.json?term=${query}&category=${category}&page=${page}`).then(res => {
+      this.setState({charities: res.data.charities, page: res.data.page, totalPages: res.data.totalPages, category: category, query: query})
     })
 
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.fetchCharities()
+    this.fetchCharities(this.state.query, '', 1)
   }
 
   handleChange = (event) => {
     this.setState({query: event.target.value})
+    console.log(this.state.page)
+    console.log(this.state.totalPages)
+  }
+
+  changePage = page => {
+    this.fetchCharities(this.state.query, this.state.category, page)
   }
 
   render(){
-    let { category, query, charities, page, categories } = this.state
+    let { category, query, charities, page, totalPages, categories } = this.state
     return(
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -68,6 +75,10 @@ export default class CharitySearch extends Component {
           })
           }
         </ul>
+        <Pagination
+        page={page}
+        totalPages={totalPages}
+        changePage={this.changePage}/>
       </div>
     )
   }
