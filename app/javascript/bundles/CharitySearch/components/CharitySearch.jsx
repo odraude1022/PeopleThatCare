@@ -20,7 +20,6 @@ export default class CharitySearch extends Component {
   }
 
   handleCategorySelect = (category) => {
-    this.setState({category: category})
     this.fetchCharities('', category, 1)
   }
 
