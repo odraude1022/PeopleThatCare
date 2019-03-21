@@ -74,7 +74,9 @@ class CharitiesController < ApplicationController
     if category && category != ''
       @charities = @charities.category_filtered(category)
     end
-    @charities = @charities.search(params[:term])
+    if(params[:term] && params[:term] != '')
+      @charities = @charities.search(params[:term])
+    end
   end
 
   def set_charity
