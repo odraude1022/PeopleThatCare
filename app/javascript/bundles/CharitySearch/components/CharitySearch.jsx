@@ -37,13 +37,11 @@ export default class CharitySearch extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.fetchCharities(this.state.query, '', 1)
+    this.fetchCharities(this.state.query, this.state.category, 1)
   }
 
   handleChange = (event) => {
     this.setState({query: event.target.value})
-    console.log(this.state.page)
-    console.log(this.state.totalPages)
   }
 
   changePage = page => {
