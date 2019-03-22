@@ -23,7 +23,8 @@
         <% end %>
         </li>
       </ul>
-      <%= will_paginate @news_posts %>
+
     </div>
   </div>
+  <%= will_paginate @news_posts, class: "pagination numbers" %>
 </div>

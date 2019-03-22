@@ -8,27 +8,25 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-
-          <li class="nav-item">
-            <%= link_to "Home", root_url, class: "nav-link" %>
+          <li class="nav-item ">
+            <%= link_to "Home", root_url, class: "nav-link nav-display" %>
           </li>
 
           <li class="nav-item">
-            <%= link_to "News Feed", news_posts_path, class: "nav-link" %>
+            <%= link_to "News Feed", news_posts_path, class: "nav-link nav-display" %>
           </li>
 
           <li class="nav-item">
-            <%= link_to "Search for Charities", charities_path, class: "nav-link" %>
+            <%= link_to "Search for Charities", charities_path, class: "nav-link nav-display" %>
           </li>
 
           <li class="nav-item">
-            <%= link_to "Log out", user_logout_path, method: :delete, class: "nav-link" %>
+            <%= link_to "Log out", user_logout_path, method: :delete, class: "nav-link nav-display" %>
           </li>
 
           <li class="nav-item">
-            <%= link_to "Profile", current_user, class: "nav-link" %>
+            <%= link_to "Profile", current_user, class: "nav-link nav-display" %>
           </li>
-
         </ul>
       </div>
     </nav>
@@ -45,23 +43,23 @@
       <ul class="navbar-nav mr-auto">
 
         <li class="nav-item">
-          <%= link_to "Home", root_url, class: "nav-link" %>
+          <%= link_to "Home", root_url, class: "nav-link nav-display" %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "Create News Post", new_news_post_path, class: "nav-link" %>
+          <%= link_to "Create News Post", new_news_post_path, class: "nav-link nav-display" %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "News Feed", news_posts_path, class: "nav-link" %>
+          <%= link_to "News Feed", news_posts_path, class: "nav-link nav-display" %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "Log out", charity_logout_path, method: :delete, class: "nav-link" %>
+          <%= link_to "Log out", charity_logout_path, method: :delete, class: "nav-link nav-display" %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "Profile", current_charity, class: "nav-link" %>
+          <%= link_to "Profile", current_charity, class: "nav-link nav-display" %>
         </li>
 
       </ul>
@@ -80,19 +78,19 @@
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item">
-        <%= link_to "Home", root_url, class: "nav-link" %>
+        <%= link_to "Home", root_url, class: "nav-link nav-display" %>
       </li>
 
       <li class="nav-item">
-        <%= link_to "User Log in", user_login_path, class: "nav-link" %>
+        <%= link_to "User Log in", user_login_path, class: "nav-link nav-display" %>
       </li>
 
       <li class="nav-item">
-        <%= link_to "Charity Log in", charity_login_path, class: "nav-link" %>
+        <%= link_to "Charity Log in", charity_login_path, class: "nav-link nav-display" %>
       </li>
 
       <li class="nav-item">
-        <%= link_to "User Sign up", new_user_path, class: "nav-link" %>
+        <%= link_to "User Sign up", new_user_path, class: "nav-link nav-display" %>
       </li>
 
       <li class="nav-item">

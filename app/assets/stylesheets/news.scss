@@ -79,6 +79,11 @@
   border-radius: 15px;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center !important;
+}
+
 // ========= Mobile News Post ==========
 
 @media all and (max-width: 1154px) {
