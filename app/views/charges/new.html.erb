@@ -4,6 +4,7 @@
       <p><%= flash[:error] %></p>
     <% end %>
   </div>
+  <h1>Donate to <%= @charity.organization_name %></h1>
   <article>
     <%= label_tag(:amount, 'Donation Amount:') %>
     <%= text_field_tag(:amount) %>

@@ -1,6 +1,7 @@
 class ChargesController < ApplicationController
 
   def new
+    @charity = Charity.find(params[:charity_id].to_i)
   end
 
   def create
@@ -41,7 +42,7 @@ class ChargesController < ApplicationController
   private
 
   def charge_params
-    params.permit(:amount, :stripeToken)
+    params.permit(:amount, :stripeToken, :charity_id)
   end
 
 end
