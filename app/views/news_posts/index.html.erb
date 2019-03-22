@@ -12,7 +12,7 @@
             <%= image_tag post.image, src: post.image, onerror: 'this.error=null;this.src="/gina.jpg"', class: "img-news-post" %>
           <% else %>
             <%= link_to post.image do %>
-              <%= image_tag "https://images.freeimages.com/images/large-previews/25d/eagle-1523807.jpg", class: "img-news-post" %>
+              <%= image_tag "/news_post.png", class: "img-news-post" %>
             <% end %>
           <% end %>
 

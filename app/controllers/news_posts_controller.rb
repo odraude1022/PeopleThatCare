@@ -23,6 +23,7 @@ class NewsPostsController < ApplicationController
 
   def new
     @news_post = NewsPost.new
+    @twitter_timeline = Twitter.new
   end
 
   def create
