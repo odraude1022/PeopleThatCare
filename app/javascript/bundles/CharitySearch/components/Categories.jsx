@@ -3,8 +3,8 @@ import Category from './Category'
 
 const Categories = props => {
   return (
-    <ul>
-      <li>
+    <ul className = "button-wrap" >
+      <li className = "category-button" >
         <button onClick={() => props.handleCategorySelect('')}>
           All
         </button>

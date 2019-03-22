@@ -52,16 +52,18 @@ export default class CharitySearch extends Component {
     let { category, query, charities, page, totalPages, categories } = this.state
     return(
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            autoComplete="off"
-            type="text"
-            placeholder="Search"
-            value={this.state.query}
-            onChange={this.handleChange}
-            className="hello"
-          />
-        </form>
+        <div className= "search-wrap">
+          <form onSubmit={this.handleSubmit}>
+            <input
+                autoComplete="off"
+                type="text"
+                placeholder="Search"
+                value={this.state.query}
+                onChange={this.handleChange}
+                className="form-control search-bar"
+            />
+          </form>
+        </div>
         <Categories
           handleCategorySelect={this.handleCategorySelect}
           categories={this.state.categories}

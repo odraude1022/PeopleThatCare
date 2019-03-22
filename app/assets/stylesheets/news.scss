@@ -84,6 +84,32 @@
   justify-content: center !important;
 }
 
+// ========== search for charity ============
+
+.search-bar {
+  border-radius: 25px;
+  width: 55%;
+  margin: auto;
+}
+
+.button-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.category-button {
+  display: inline;
+  padding: .5rem;
+}
+
+.category-button button {
+  border-radius: 10px;
+  margin: 1rem 0;
+  // margin-left: auto;
+  // display: flex;
+  // justify-content: center;
+}
+
 // ========= Mobile News Post ==========
 
 @media all and (max-width: 1154px) {
