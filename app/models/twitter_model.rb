@@ -1,4 +1,8 @@
 class Twitter < ApplicationRecord
+
+  def initialize(twitter_handle)
+    @twitter_handle = twitter_handle
+  end
   
   #Tweets by username
   def get_tweets
@@ -8,7 +12,7 @@ class Twitter < ApplicationRecord
   end
 
   def twitter_profile
-    @user_timeline = $TWITTER_CLIENT.user_timeline
+    @user_timeline = $TWITTER_CLIENT.user_timeline(self.twitter_handle)
     @home_timeline = $TWITTER_CLIENT.home_timeline
   end
 

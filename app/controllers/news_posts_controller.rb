@@ -18,6 +18,7 @@ class NewsPostsController < ApplicationController
 
   def show
     @news_post = NewsPost.find(params[:id])
+    @twitter_timeline = Twitter.new(twitter_handle)
   end
 
   def new
