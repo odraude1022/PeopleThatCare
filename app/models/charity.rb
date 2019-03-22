@@ -62,17 +62,5 @@ class Charity < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
-
-  #Tweets by username
-  def get_tweets
-    $TWITTER_CLIENT.search("from:#{self.twitter_handle}", result_type: "recent").take(5).map do |tweet|
-      tweet.text
-    end
-  end
-
-  def twitter_profile
-    @user_timeline = $TWITTER_CLIENT.user_timeline
-    @home_timeline = $TWITTER_CLIENT.home_timeline
-  end
-
+  
 end
