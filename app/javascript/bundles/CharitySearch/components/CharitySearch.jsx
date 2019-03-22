@@ -29,7 +29,7 @@ export default class CharitySearch extends Component {
     })
   }
 
-  fetchCharities = (query, category, page) => {
+  fetchCharities = (query = '', category = '', page = 1) => {
     let data = axios.get(`/charities.json?term=${query}&category=${category}&page=${page}`).then(res => {
       this.setState({charities: res.data.charities, page: res.data.page, totalPages: res.data.totalPages, category: category, query: query})
     })
@@ -59,6 +59,7 @@ export default class CharitySearch extends Component {
             placeholder="Search"
             value={this.state.query}
             onChange={this.handleChange}
+            className="hello"
           />
         </form>
         <Categories
