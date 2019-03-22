@@ -4,6 +4,9 @@ class CharitiesController < ApplicationController
 
   def index
     page        = (params[:page] || 1).to_i
+    if(page == 'undefined')
+      page = 1
+    end
     per_page    = 10
     total_pages = (@charities.count.to_f / per_page).ceil
     total_pages = 1 if total_pages.zero?
@@ -71,10 +74,10 @@ class CharitiesController < ApplicationController
     @charities = Charity.all
     @categories = Category.all
     category = params[:category]
-    if category && category != ''
+    if category && category != '' && category != 'undefined'
       @charities = @charities.category_filtered(category)
     end
-    if(params[:term] && params[:term] != '')
+    if(params[:term] && params[:term] != '' && params[:term] != 'undefined')
       @charities = @charities.search(params[:term])
     end
   end

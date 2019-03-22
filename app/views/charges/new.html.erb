@@ -15,8 +15,6 @@
   <button id='donateButton'>Donate</button>
 <% end %>
 
-<script src="https://checkout.stripe.com/checkout.js"></script>
-
 <script>
 var handler = StripeCheckout.configure({
   key: '<%= Rails.configuration.stripe[:publishable_key] %>',
