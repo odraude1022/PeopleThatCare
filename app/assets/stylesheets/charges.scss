@@ -1,3 +1,69 @@
 // Place all the styles related to the charges controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// ========= donation page ===========
+
+.label-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+  text-align: center;
+}
+
+.donation-label {
+  color: #8D8D8E;
+}
+
+.donation-field input {
+  width: 100%;
+  border-radius: 7px;
+}
+
+.button-donate {
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+  text-align: center;
+}
+
+.button-donate  button {
+  border-radius: 10px;
+  width: 100px;
+  height: 45px;
+  background-color: #28a745;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.dog {
+  width: 700px;
+  height: 500px;
+}
+
+// ========= efective donation =======
+.donations {
+  color: #8D8D8E;
+  margin: 2rem;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.img-donation-wrap{
+  display: flex;
+  justify-content: center;
+}
+
+.image-donations {
+  border-radius: 20px;
+  margin-bottom: 3rem;
+}
+
+// ========= mobile page ======
+
+@media all and (max-width: 650px) {
+  .image-donations {
+    height: 300px;
+    width: 300px;
+  }
+}
