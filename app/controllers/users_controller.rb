@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     if user.update(user_params)
       redirect_to user, notice: "Successfully updated profile"
     else
-      redirect_to user, alert: charity.errors.full_messages.to_sentence
+      redirect_to user, alert: user.errors.full_messages.to_sentence
     end
   end
 
