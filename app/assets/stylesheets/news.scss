@@ -84,6 +84,16 @@
   justify-content: center !important;
 }
 
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #0ABAB6;
+    border-color: #0ABAB6;
+}
+
+.page-link {
+  color: #0ABAB6;
+}
 // ========== search for charity ============
 
 .search-bar {
