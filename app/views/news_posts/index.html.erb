@@ -21,7 +21,9 @@
           <div class="text-news-wrap">
             <span><%= post.text %></span>
           </div>
+          <% if charity_logged_in? %>
           <%= render 'button', post: post %>
+          <% end %>
         <% end %>
         </li>
       </ul>
