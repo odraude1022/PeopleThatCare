@@ -12,7 +12,6 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 #twitter
 gem 'twitter'
-gem 'twitter-bootstrap-rails'
 
 #bootstrap
 gem 'bootstrap', '~> 4.3.1'
