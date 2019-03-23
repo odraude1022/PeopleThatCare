@@ -5,8 +5,6 @@ ruby '~> 2.5'
 # for thumbnails to appear on links in news posts
 gem 'link_thumbnailer'
 
-dot env
-
 gem 'stripe'
 
 gem 'dotenv'
