@@ -7,6 +7,8 @@
       <% @news_posts.each do |post| %>
         <li><%= link_to post.title, post, class: "title-news-feed" %>
           <p class="author">Author: <%= link_to post.charity.organization_name, post.charity %></p>
+          <% t = post.created_at %>
+          <p class="author">Date posted: <%= t.strftime("%m/%d/%Y at %I:%M%p")%>  </p>
           <div class="img-text-news-wrap">
           <% if post.image.present? %>
             <%= image_tag post.image, src: post.image, onerror: 'this.error=null;this.src="/gina.jpg"', class: "img-news-post" %>

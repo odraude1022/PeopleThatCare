@@ -30,7 +30,6 @@ class NewsPostsController < ApplicationController
         @charities_tweets = $TWITTER_CLIENT.user_timeline(current_charity.twitter_handle)
       end
 
-
     #this sorts the tweets
     @charities_tweets.flatten!
     @charities_tweets = @charities_tweets.sort_by do |tweet| 
