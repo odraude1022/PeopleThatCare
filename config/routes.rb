@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :news_posts
   resources :categories, only: [:index, :show]
 
-  resources :twitter
+  resources :twitters
   get '/twitter_profile' => "twitter#twitter_profile"
 
   get 'hello_world', to: 'hello_world#index'
