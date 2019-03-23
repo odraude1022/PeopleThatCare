@@ -6,8 +6,15 @@
 @import 'news';
 @import 'profile_users';
 
- body {
-   margin: 0;
-   background-color: #F8F9FA;
-   font-family: 'Open Sans', sans-serif;
+body {
+  margin: 0;
+  background-color: #F8F9FA;
+  font-family: 'Open Sans', sans-serif;
  }
+
+@media all and (max-width: 990px) {
+  .nav-display {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

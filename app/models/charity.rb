@@ -69,6 +69,7 @@ class Charity < ApplicationRecord
   #   end
   # end
 
+
   # def twitter_profile
   #   @user_timeline = $TWITTER_CLIENT.user_timeline(self.twitter_handle)
   # end

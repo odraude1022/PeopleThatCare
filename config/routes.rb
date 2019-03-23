@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
 
+  resources :charges
   resources :home, only: :index
   resources :users, except: :index do
     scope module: :users do
