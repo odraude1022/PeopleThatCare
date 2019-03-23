@@ -2,6 +2,7 @@ require 'link_thumbnailer'
 require 'twitter'
 class NewsPostsController < ApplicationController
   before_action :set_posts, only: [:index]
+  before_action :set_post, only: [:destroy]
 
   def index
     page        = (params[:page] || 1).to_i
@@ -88,7 +89,7 @@ class NewsPostsController < ApplicationController
 
   def destroy
     @news_post.destroy
-    redirect_to root_url, notice: 'News Post was successfully eliminated!'
+    redirect_back fallback_location: "/", notice: 'News Post was successfully deleted!'
   end
 
   private
@@ -99,6 +100,10 @@ class NewsPostsController < ApplicationController
     elsif user_logged_in?
       @news_posts = NewsPost.where(charity: current_user.charities)
     end
+  end
+
+  def set_post
+    @news_post = current_charity.news_posts.find(params[:id])
   end
 
   def news_post_params
