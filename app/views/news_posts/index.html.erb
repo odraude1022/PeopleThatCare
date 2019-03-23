@@ -27,13 +27,13 @@
         <% @charities_tweets.each do |post| %>
 
           <li>
-          <p>Charity: <%= post&.user&.screen_name %></p>
-          <p>Charity Name: <%= post&.user&.name %></p>
-          <p>Tweet: <%= post&.text %></p>
-          <p>Time <%= post&.created_at %></p>
-          <% twitter_avatar = post&.user&.profile_image_url %>
-          <%= image_tag '/twitter_logo.png', height: "30" %>
-          <img src=<%=twitter_avatar%> />
+            <p>Charity: <%= post&.user&.screen_name %> </p>
+            <p>Charity Name: <%= post&.user&.name %> </p>
+            <p>Tweet: <%= post&.text %> </p>
+            <p>Time <%= post&.created_at %> </p>
+            <% twitter_avatar = post&.user&.profile_image_url %>
+            <%= image_tag '/twitter_logo.png', height: "30" %>
+            <img src= <%=twitter_avatar%> />
           </li>
         <% end %>
       </ul>

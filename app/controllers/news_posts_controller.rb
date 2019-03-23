@@ -15,14 +15,21 @@ class NewsPostsController < ApplicationController
         render json: { news_posts: @news_posts, page: page, totalPages: total_pages }
       end
     end
-    @twitter_handle = current_charity ? current_charity.twitter_handle.gsub('@', '') : 'hello'
-    @charities_tweets = current_user.charities.map do |charity|
-      begin 
-        $TWITTER_CLIENT.user_timeline(charity.twitter_handle)
-      rescue 
+
+      if user_logged_in?
+        @twitter_handle = current_charity ? current_charity.twitter_handle.gsub('@', '') : 'hello'
+        @charities_tweets = current_user.charities.map do |charity|
+          begin 
+            $TWITTER_CLIENT.user_timeline(charity.twitter_handle)
+          rescue 
+          end
+        end
+      elsif charity_logged_in?
+        @twitter_handle = current_charity ? current_charity.twitter_handle.gsub('@', '') : 'hello'
+        @charities_tweets = $TWITTER_CLIENT.user_timeline(current_charity.twitter_handle)
       end
-    end
-    
+
+
     #this sorts the tweets
     @charities_tweets.flatten!
     @charities_tweets = @charities_tweets.sort_by do |tweet| 
@@ -35,18 +42,18 @@ class NewsPostsController < ApplicationController
       end 
     end 
 
-    # @user_timeline = $TWITTER_CLIENT.user_timeline("hello")
-    # @home_timeline = $TWITTER_CLIENT.home_timeline
+    #can display a specific user's timeline
+    @user_timeline = $TWITTER_CLIENT.user_timeline("hello")
+    #@home_timeline = $TWITTER_CLIENT.home_timeline
   end
 
   def show
     @news_post = NewsPost.find(params[:id])
-    @twitter_timeline = Twitter.new(twitter_handle)
+    #@twitter_timeline = Twitter.new(twitter_handle)
   end
 
   def new
     @news_post = NewsPost.new
-    @twitter_timeline = Twitter.new
   end
 
   def create
@@ -77,6 +84,11 @@ class NewsPostsController < ApplicationController
         redirect_back fallback_location: "/", alert: "Invalid url, please try again"
       end
     end
+  end
+
+  def destroy
+    @news_post.destroy
+    redirect_to root_url, notice: 'News Post was successfully eliminated!'
   end
 
   private
