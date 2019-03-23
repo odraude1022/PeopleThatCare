@@ -173,6 +173,23 @@
     margin: 1rem;
     text-align: justify;
   }
+
+  .charity-name, .charity-name a  {
+    color: #686869;
+    font-size: .9rem;
+    margin-top: .4rem;
+  }
+
+  .img-search-wrap {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
+
+  .img-search {
+    margin-left: 5rem;
+  }
 }
 
 @media all and (max-width: 520px) {
