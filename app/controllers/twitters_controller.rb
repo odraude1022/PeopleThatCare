@@ -1,22 +1,20 @@
-class Twitter < ApplicationRecord
-
-  def initialize(twitter_handle)
-    @twitter_handle = twitter_handle
-  end
-  
+class TwittersController < ApplicationController 
   #Tweets by username
-  def get_tweets
-    $TWITTER_CLIENT.search("from:#{Charity.id.twitter_handle}", result_type: "recent").take(5).map do |tweet|
+  def show
+    $TWITTER_CLIENT.search("from:#{current_charity.twitter_handle}", result_type: "recent").take(5).map do |tweet|
       tweet.text
     end
   end
-
-  def twitter_timeline 
+  def index 
+    @twitter_handle = current_charity.twitter_handle.gsub('@', '')
+    @url = "https://twitter.com/#{@twitter_handle}?ref_src=twsrc%5Etfw"
+    p @twitter_handle 
+    p 'hello world'
     tweets = $TWITTER_CLIENT.user_timeline('rubyinside', count: 2)
   end
 
   def twitter_profile
-    @user_timeline = $TWITTER_CLIENT.user_timeline(charity_id.twitter_handle)
+    @user_timeline = $TWITTER_CLIENT.user_timeline(current_charity.twitter_handle)
     @home_timeline = $TWITTER_CLIENT.home_timeline
   end
 
@@ -31,5 +29,4 @@ class Twitter < ApplicationRecord
       description: user_twitter_profile.description
   })
   end
-
-end
+end 

@@ -1,4 +1,5 @@
 require 'link_thumbnailer'
+require 'twitter'
 class NewsPostsController < ApplicationController
   before_action :set_posts, only: [:index]
 
@@ -14,6 +15,28 @@ class NewsPostsController < ApplicationController
         render json: { news_posts: @news_posts, page: page, totalPages: total_pages }
       end
     end
+    @twitter_handle = current_charity ? current_charity.twitter_handle.gsub('@', '') : 'hello'
+    @charities_tweets = current_user.charities.map do |charity|
+      begin 
+        $TWITTER_CLIENT.user_timeline(charity.twitter_handle)
+      rescue 
+      end
+    end
+    
+    #this sorts the tweets
+    @charities_tweets.flatten!
+    @charities_tweets = @charities_tweets.sort_by do |tweet| 
+      if tweet
+        begin 
+          created_at = Time.parse(tweet.created_at)
+          created_at.starts_at
+        rescue 
+        end 
+      end 
+    end 
+
+    # @user_timeline = $TWITTER_CLIENT.user_timeline("hello")
+    # @home_timeline = $TWITTER_CLIENT.home_timeline
   end
 
   def show

@@ -5,21 +5,27 @@ ruby '~> 2.5'
 # for thumbnails to appear on links in news posts
 gem 'link_thumbnailer'
 
+#dot env
 gem 'dotenv'
 gem 'dotenv-rails', groups: [:development, :test]
 
+#twitter
 gem 'twitter'
+gem 'twitter-bootstrap-rails'
+
+#bootstrap
+gem 'bootstrap', '~> 4.3.1'
 
 gem 'jquery-rails'
 
-gem 'bootstrap', '~> 4.3.1'
-
 gem 'hirb'
 
+#fake data
 gem 'faker'
 
 gem 'react_on_rails'
 
+#pagination
 gem 'will_paginate-bootstrap4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

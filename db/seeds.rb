@@ -15,8 +15,8 @@ end
 Charity.destroy_all
 
 charity_list = [
-  ["St. Jude", 620646012, "Jude", "stjude@stjude.com", "@stjude", "stjude.org", "password", "password"],
-  ["Unesco", 12345, "John", "john@john.com", "@unesco", "unesco.org", "password", "password"],
+  ["St. Jude", 620646012, "Jude", "stjude@stjude.com", "@StJude", "stjude.org", "password", "password"],
+  ["Unesco", 12345, "John", "john@john.com", "@Unesco", "unesco.org", "password", "password"],
   ["Eduardo's Charity", 99999, "Eduardo", "eduardo@charity.com", "@eduardo_charity", "eduardocharity.org", "password", "password"],
   ["Rocio's Charity", 123344, "Rocio", "rocio@charity.com", "@rocios_charity", "rociocharity.org", "password", "password"],
   ["Thayna's Charity", 876215, "Thayna", "thayna@charity.com", "@thaynas_charity", "thaynacharity.org", "password", "password"]

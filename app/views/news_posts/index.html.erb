@@ -15,13 +15,27 @@
               <%= image_tag "/news_post.png", class: "img-news-post" %>
             <% end %>
           <% end %>
-
           </div>
           <div class="text-news-wrap">
             <span><%= post.text %></span>
           </div>
         <% end %>
         </li>
+      </ul>
+      </div>
+      <ul>
+        <% @charities_tweets.each do |post| %>
+
+          <li>
+          <p>Charity: <%= post&.user&.screen_name %></p>
+          <p>Charity Name: <%= post&.user&.name %></p>
+          <p>Tweet: <%= post&.text %></p>
+          <p>Time <%= post&.created_at %></p>
+          <% twitter_avatar = post&.user&.profile_image_url %>
+          <%= image_tag '/twitter_logo.png', height: "30" %>
+          <img src=<%=twitter_avatar%> />
+          </li>
+        <% end %>
       </ul>
       <%= will_paginate @news_posts %>
     </div>
