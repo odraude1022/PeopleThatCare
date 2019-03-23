@@ -68,16 +68,21 @@ export default class CharitySearch extends Component {
           handleCategorySelect={this.handleCategorySelect}
           categories={this.state.categories}
         />
-        <ul>
-          { this.state.charities && this.state.charities.map(charity => {
-            return <li key={charity.id} ><Charity charity={charity}/></li>
-          })
-          }
-        </ul>
-        <Pagination
-        page={page}
-        totalPages={totalPages}
-        changePage={this.changePage}/>
+        <div className = "img-search-wrap">
+          <ul className = "ul-charity">
+            { this.state.charities && this.state.charities.map(charity => {
+              return <li key={charity.id} className = "charity-name" ><Charity charity={charity}/></li>
+            })
+            }
+          </ul>
+          <img className= "img-search" src="/volunteers.jpg"  alt="volunteers"/>
+        </div>
+        <div className = "search-pagination">
+          <Pagination
+          page={page}
+          totalPages={totalPages}
+          changePage={this.changePage}/>
+        </div>
       </div>
     )
   }
