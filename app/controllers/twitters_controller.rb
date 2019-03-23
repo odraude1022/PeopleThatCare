@@ -9,7 +9,6 @@ class TwittersController < ApplicationController
     @twitter_handle = current_charity.twitter_handle.gsub('@', '')
     @url = "https://twitter.com/#{@twitter_handle}?ref_src=twsrc%5Etfw"
     tweets = $TWITTER_CLIENT.search('from:rubyinside OR from:CNN', result_type: 'recent').take(10)
-    p tweets
   end
 
   def twitter_profile
