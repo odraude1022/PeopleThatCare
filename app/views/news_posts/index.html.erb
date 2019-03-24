@@ -6,10 +6,14 @@
         <ul class="articles-border">
           <% @news_posts.each do |post| %>
             <li><%= link_to post.title, post, class: "title-news-feed" %>
+              <% if charity_logged_in? %>
+                <%= render 'button', post: post %>
+              <% end %>
               <p class="author">Author: <%= link_to post.charity.organization_name, post.charity %></p>
                 <% t = post.created_at %>
               <p class="author">Date posted: <%= t.strftime("%m/%d/%Y at %I:%M%p")%>  </p>
-              <div class="img-text-news-wrap">
+            <div class="img-text-news-wrap">
+              <div class="img-news-wrap">
                 <% if post.image.present? %>
                   <%= image_tag post.image, src: post.image, class: "img-news-post" %>
                 <% else %>
@@ -21,9 +25,7 @@
               <div class="text-news-wrap">
                 <span><%= post.text %></span>
               </div>
-              <% if charity_logged_in? %>
-                <%= render 'button', post: post %>
-              <% end %>
+            </div>
             </li>
           <% end %>
         </ul> 
@@ -37,21 +39,30 @@
       <div class="container">
         <ul>
         <% @charities_tweets.each do |post| %>
-          <div class="row">
-            <div class="col-sm-12 strip">
-            <% twitter_avatar = post&.user&.profile_image_url %>
-              <img  src=<%=twitter_avatar%>  alt="profile image" />
-              <strong><%= post&.user&.name %></strong> 
-              <span class="light"> @<%= post&.user&.screen_name %> - 
-              <span class="time"><%= post&.created_at.strftime("%m/%d/%Y at %I:%M%p") %> <img id="logo" 
-                src="/twitter_logo.png"
-                alt="twitter logo", 
-                height="25" />
-                </span>
-                </span>
-              <br> Tweet: <%= post&.text %> <br>
+          <% if post %>
+            <div class="row">
+              <div class="col-sm-12 strip">
+              <% twitter_avatar = post.user.profile_image_url %>
+                <img  src=<%=twitter_avatar%>  alt="profile image" />
+                <strong><%= post.user.name %></strong> 
+                <span class="light"> @<%= post.user.screen_name %> - 
+                <span class="time"><%= post.created_at.strftime("%m/%d/%Y at %I:%M%p") %> <img id="logo" 
+                  src="/twitter_logo.png"
+                  alt="twitter logo", 
+                  height="25" />
+                  </span>
+                  </span>
+                <br> <%= post.text %> <br>
+                <div class="summary">
+                  <span class="buttons">
+                    <a href="#"><i class="fa fa-reply"></i> Reply</a>
+                    <a href="#"><i class="fa fa-retweet"></i> Retweet</a>
+                    <a href="#"><i class="fa fa-star"></i> Favourite</a>
+                  </span>
+                </div>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
         </ul>
       </div>

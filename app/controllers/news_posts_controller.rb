@@ -1,5 +1,6 @@
 require 'link_thumbnailer'
 require 'twitter'
+require 'time'
 class NewsPostsController < ApplicationController
   before_action :set_posts, only: [:index]
   before_action :set_post, only: [:destroy]
@@ -32,15 +33,12 @@ class NewsPostsController < ApplicationController
 
     #this sorts the tweets
     @charities_tweets.flatten!
+    @charities_tweets.compact!
     @charities_tweets = @charities_tweets.sort_by do |tweet| 
-      if tweet
-        begin 
-          created_at = Time.parse(tweet.created_at)
-          created_at.starts_at
-        rescue 
-        end 
-      end 
+      tweet.created_at if tweet && tweet.created_at
     end 
+    @charities_tweets.reverse!
+    @charities_tweets = @charities_tweets[0,27]
 
     #can display a specific user's timeline
     @user_timeline = $TWITTER_CLIENT.user_timeline("hello")
