@@ -1,6 +1,6 @@
 require 'link_thumbnailer'
 require 'twitter'
-require 'time'
+
 class NewsPostsController < ApplicationController
   before_action :set_posts, only: [:index]
   before_action :set_post, only: [:destroy]
