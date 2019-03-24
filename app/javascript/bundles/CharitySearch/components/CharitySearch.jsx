@@ -52,30 +52,37 @@ export default class CharitySearch extends Component {
     let { category, query, charities, page, totalPages, categories } = this.state
     return(
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            autoComplete="off"
-            type="text"
-            placeholder="Search"
-            value={this.state.query}
-            onChange={this.handleChange}
-            className="hello"
-          />
-        </form>
+        <div className= "search-wrap">
+          <form onSubmit={this.handleSubmit}>
+            <input
+                autoComplete="off"
+                type="text"
+                placeholder="Search"
+                value={this.state.query}
+                onChange={this.handleChange}
+                className="form-control search-bar"
+            />
+          </form>
+        </div>
         <Categories
           handleCategorySelect={this.handleCategorySelect}
           categories={this.state.categories}
         />
-        <ul>
-          { this.state.charities && this.state.charities.map(charity => {
-            return <li key={charity.id} ><Charity charity={charity}/></li>
-          })
-          }
-        </ul>
-        <Pagination
-        page={page}
-        totalPages={totalPages}
-        changePage={this.changePage}/>
+        <div className = "img-search-wrap">
+          <ul className = "ul-charity">
+            { this.state.charities && this.state.charities.map(charity => {
+              return <li key={charity.id} className = "charity-name" ><Charity charity={charity}/></li>
+            })
+            }
+          </ul>
+          <img className= "img-search" src="/volunteers.jpg"  alt="volunteers"/>
+        </div>
+        <div className = "search-pagination">
+          <Pagination
+          page={page}
+          totalPages={totalPages}
+          changePage={this.changePage}/>
+        </div>
       </div>
     )
   }

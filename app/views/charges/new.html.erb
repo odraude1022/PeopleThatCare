@@ -4,17 +4,23 @@
       <p><%= flash[:error] %></p>
     <% end %>
   </div>
-  <h1>Donate to <%= @charity.organization_name %></h1>
-  <article>
-    <%= label_tag(:amount, 'Donation Amount:') %>
-    <%= text_field_tag(:amount) %>
-  </article>
-  <article>
-    <%= hidden_field_tag(:stripeToken) %>
-  </article>
-  <button id='donateButton'>Donate</button>
-<% end %>
-
+  <h1 class="title" >Donate to <%= @charity.organization_name %></h1>
+  <div class="label-wrap">
+    <article class="donation-field">
+      <%= label_tag(:amount, 'Donation Amount:', class: "donation-label" )%>
+      <%= text_field_tag (:amount)%>
+    </article>
+  </div>
+  <div class="button-donate">
+    <article>
+      <%= hidden_field_tag(:stripeToken) %>
+    </article>
+    <button id='donateButton'>Donate</button>
+  <% end %>
+</div>
+<div class="img-donation-wrap">
+  <img src="/dog-shelter.jpeg" alt="Shelter dog to be adopted" class="image-donations dog">
+</div>
 <script>
 var handler = StripeCheckout.configure({
   key: '<%= Rails.configuration.stripe[:publishable_key] %>',
