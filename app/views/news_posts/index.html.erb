@@ -49,7 +49,14 @@
                 height="25" />
                 </span>
                 </span>
-              <br> Tweet: <%= post&.text %> <br>
+              <br> <%= post&.text %> <br>
+              <div class="summary">
+                <span class="buttons">
+                  <a href="#"><i class="fa fa-reply"></i> Reply</a>
+                  <a href="#"><i class="fa fa-retweet"></i> Retweet</a>
+                  <a href="#"><i class="fa fa-star"></i> Favourite</a>
+                </span>
+              </div>
             </div>
           </div>
         <% end %>

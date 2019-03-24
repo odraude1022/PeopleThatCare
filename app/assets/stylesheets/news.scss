@@ -17,7 +17,7 @@
 
 .half {
   width: 50%;
-  margin: auto;
+  margin: 10px auto;
   display: inline-flex;
 }
 
@@ -132,10 +132,6 @@
 // ========= TWITTER ==========
 //https://bountify.co/twitter-tweet-in-boothstrap-3
 
-body{
-  margin-top: 10px;
-}
-
 .row {
   background-color: white;
 }
@@ -161,4 +157,25 @@ body{
 
 .light{
   color: silver;
+}
+
+.summary{
+  margin-bottom: 20px;
+}
+
+.buttons{
+  float: right;
+}
+
+.buttons a{
+  color: silver;
+}
+
+.buttons a:hover{
+  color: #428bca;
+  text-decoration: none;
+}
+
+.buttons i.fa{
+  margin-left: .5em;
 }
