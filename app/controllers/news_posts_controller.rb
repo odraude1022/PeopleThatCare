@@ -39,15 +39,10 @@ class NewsPostsController < ApplicationController
     end 
     @charities_tweets.reverse!
     @charities_tweets = @charities_tweets[0,27]
-
-    #can display a specific user's timeline
-    @user_timeline = $TWITTER_CLIENT.user_timeline("hello")
-    #@home_timeline = $TWITTER_CLIENT.home_timeline
   end
 
   def show
     @news_post = NewsPost.find(params[:id])
-    #@twitter_timeline = Twitter.new(twitter_handle)
   end
 
   def new
