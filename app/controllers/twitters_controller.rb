@@ -5,6 +5,7 @@ class TwittersController < ApplicationController
       tweet.text
     end
   end
+  
   def index 
     @twitter_handle = current_charity.twitter_handle.gsub('@', '')
     @url = "https://twitter.com/#{@twitter_handle}?ref_src=twsrc%5Etfw"
