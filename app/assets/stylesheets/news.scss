@@ -32,7 +32,7 @@
   margin: .3rem;
   border: 1px solid #AAAAAA;
   border-radius: 5px;
-  background-color: #DEF5F1;
+  background-color: #FFF;
 }
 
 .title-news-feed {
@@ -40,21 +40,38 @@
   font-family: 'Quicksand', sans-serif;
 }
 
+.title-news-feed button {
+  display: flex;
+}
+
+.title-button-wrap {
+  display: inline;
+  margin: 1rem;
+}
+
+.title-button-wrap a {
+  color: #FFF;
+}
+
 .author {
   font-size: 1rem;
 }
 
 .img-news-post {
-  height: 300px;
-  width: 300px;
+  height: 200px;
+  width: 200px;
 }
 
 .img-text-news-wrap {
-  display: inline-block;
+  display: flex
+}
+
+.img-news-wrap {
+  display: inline;
 }
 
 .text-news-wrap {
-  display: inline-block;
+  display: inline;
   width: 60%;
   margin: 1rem;
   text-align: justify;
@@ -96,6 +113,11 @@
     margin: 1rem;
     text-align: justify;
   }
+
+  .half {
+    width: 100%;
+    display: block;
+  }
 }
 
 @media all and (max-width: 800px) {
@@ -131,6 +153,10 @@
 // ========= TWITTER ==========
 // ========= TWITTER ==========
 //https://bountify.co/twitter-tweet-in-boothstrap-3
+
+.twitter-feed {
+  display: flex;
+}
 
 .row {
   background-color: white;

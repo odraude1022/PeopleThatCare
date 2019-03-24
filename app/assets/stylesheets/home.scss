@@ -75,9 +75,23 @@
   align-items: baseline;
 }
 
+.social-logos {
+  position:absolute; 
+  right: 200px;
+  float:right;
+}
+
+i {
+  padding-left: .7rem;
+}
+
 .thanks-footer, .get-involved {
   padding-left: 5rem;
-  font-size: .9rem;
+  font-size: 1.1rem;
+}
+
+h5 {
+  font-size: 1.1rem;
 }
 
 .footer-end {
