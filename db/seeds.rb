@@ -19,12 +19,12 @@ charity_list = [
   ["Unesco", 12345, "John", "john@john.com", "@Unesco", "unesco.org", "password", "password"],
   ["Eduardo's Charity", 99999, "Eduardo", "eduardo@charity.com", "@eduardo_charity", "eduardocharity.org", "password", "password"],
   ["Rocio's Charity", 123344, "Rocio", "rocio@charity.com", "@rocios_charity", "rociocharity.org", "password", "password"],
-  ["Thayna's Charity", 876215, "Thayna", "thayna@charity.com", "@thaynas_charity", "thaynacharity.org", "password", "password"]
-  ["Wounded Warrior Project", 202370934, "John", "wwp@charity.com", "@wwp", "woundedwarriorproject.org", "password", "password"]
-  ["National Autistic Society", 87621523, "Larry", "nas@charity.com", "@Autism", "autism.org.uk", "password", "password"]
-  ["American Cancer Society", 87621535, "Hugo", "cancer@charity.com", "@AmericanCancer", "cancer.org", "password", "password"]
-  ["Ronald McDonald House Charities", 87623315, "Maria", "mhc@charity.com", "@RMHC", "rmhc.org", "password", "password"]
-  ["The Humane Society", 87622315, "Mike", "humanesociety@charity.com", "@HumaneSociety", "humanesociety.org", "password", "password"]
+  ["Thayna's Charity", 876215, "Thayna", "thayna@charity.com", "@thaynas_charity", "thaynacharity.org", "password", "password"],
+  ["Wounded Warrior Project", 202370934, "John", "wwp@charity.com", "@wwp", "woundedwarriorproject.org", "password", "password"],
+  ["National Autistic Society", 87621523, "Larry", "nas@charity.com", "@Autism", "autism.org.uk", "password", "password"],
+  ["American Cancer Society", 87621535, "Hugo", "cancer@charity.com", "@AmericanCancer", "cancer.org", "password", "password"],
+  ["Ronald McDonald House Charities", 87623315, "Maria", "mhc@charity.com", "@RMHC", "rmhc.org", "password", "password"],
+  ["The Humane Society", 87622315, "Mike", "humanesociety@charity.com", "@HumaneSociety", "humanesociety.org", "password", "password"],
   ["March of Dimes", 87623415, "Sol", "marchofdimes@charity.com", "@MarchofDimes", "marchofdimes.org", "password", "password"]
 ]
 

@@ -1,46 +1,63 @@
-<div class="news-feed-wrap">
 <h1 class="title">News Feed</h1>
-
-<div class="news-feed-articles">
-  <div class="articles">
-    <ul class="articles-border">
-      <% @news_posts.each do |post| %>
-        <li><%= link_to post.title, post, class: "title-news-feed" %>
-          <p class="author">Author: <%= link_to post.charity.organization_name, post.charity %></p>
-          <% t = post.created_at %>
-          <p class="author">Date posted: <%= t.strftime("%m/%d/%Y at %I:%M%p")%>  </p>
-          <div class="img-text-news-wrap">
-          <% if post.image.present? %>
-            <%= image_tag post.image, src: post.image, onerror: 'this.error=null;this.src="/gina.jpg"', class: "img-news-post" %>
-          <% else %>
-            <%= link_to post.image do %>
-              <%= image_tag "/news_post.png", class: "img-news-post" %>
-            <% end %>
+<div class="news-feed-wrap">
+<div class="half">
+    
+      <div class="articles">
+        <ul class="articles-border">
+          <% @news_posts.each do |post| %>
+            <li><%= link_to post.title, post, class: "title-news-feed" %>
+              <p class="author">Author: <%= link_to post.charity.organization_name, post.charity %></p>
+                <% t = post.created_at %>
+              <p class="author">Date posted: <%= t.strftime("%m/%d/%Y at %I:%M%p")%>  </p>
+              <div class="img-text-news-wrap">
+                <% if post.image.present? %>
+                  <%= image_tag post.image, src: post.image, class: "img-news-post" %>
+                <% else %>
+                  <%= link_to post.image do %>
+                  <%= image_tag "/news_post.png", class: "img-news-post" %>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="text-news-wrap">
+                <span><%= post.text %></span>
+              </div>
+              <% if charity_logged_in? %>
+                <%= render 'button', post: post %>
+              <% end %>
+            </li>
           <% end %>
-          </div>
-          <div class="text-news-wrap">
-            <span><%= post.text %></span>
-          </div>
-          <%= render 'button', post: post %>
-        <% end %>
-        </li>
-      </ul>
+        </ul> 
       </div>
-      <ul>
-        <% @charities_tweets.each do |post| %>
+      
+  </div>
+  <div class="half">
+    <div class="twitter-feed">
 
-          <li>
-            <p>Charity: <%= post&.user&.screen_name %> </p>
-            <p>Charity Name: <%= post&.user&.name %> </p>
-            <p>Tweet: <%= post&.text %> </p>
-            <p>Time <%= post&.created_at %> </p>
+
+      <div class="container">
+        <ul>
+        <% @charities_tweets.each do |post| %>
+          <div class="row">
+            <div class="col-sm-12 strip">
             <% twitter_avatar = post&.user&.profile_image_url %>
-            <%= image_tag '/twitter_logo.png', height: "30" %>
-            <img src= <%=twitter_avatar%> />
-          </li>
+              <img  src=<%=twitter_avatar%>  alt="profile image" />
+              <strong><%= post&.user&.name %></strong> 
+              <span class="light"> @<%= post&.user&.screen_name %> - 
+              <span class="time"><%= post&.created_at.strftime("%m/%d/%Y at %I:%M%p") %> <img id="logo" 
+                src="/twitter_logo.png"
+                alt="twitter logo", 
+                height="25" />
+                </span>
+                </span>
+              <br> Tweet: <%= post&.text %> <br>
+            </div>
+          </div>
         <% end %>
-      </ul>
+        </ul>
+      </div>
+
+      
     </div>
   </div>
-  <%= will_paginate @news_posts, class: "pagination numbers" %>
 </div>
+<%= will_paginate @news_posts, class: "pagination numbers" %>

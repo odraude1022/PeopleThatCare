@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 strip">
+      <img src="http://lorempixel.com/50/50/people/" alt="profile image" />
+      <strong>TechCrunch</strong> <span class="light"> @TechCrunch - <span class="time">17m</span></span><br>
+      MacBook Air Refresh With Spec Bumps Said To Be Coming Tomorrow<br>
+      <a href="http://tcrn.ch/1rFoZWn/">tcrn.ch/1rFoZWn</a> by <a href="@drizzled">@drizzled</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ul>
+  <% @charities_tweets.each do |post| %>
+    <li>
+      <% twitter_avatar = post&.user&.profile_image_url %>
+      <img src= <%=twitter_avatar%> />
+      <p>Charity Name: <%= post&.user&.name %> </p>
+      <p>Username: <%= post&.user&.screen_name %> </p>
+      <%= image_tag '/twitter_logo.png', height: "30" %>
+      <p>Tweet: <%= post&.text %> </p>
+      <p>Time <%= post&.created_at %> </p>
+    </li>
+  <% end %>
+</ul>
