@@ -21,22 +21,22 @@ class NewsPostsController < ApplicationController
       if user_logged_in?
         @twitter_handle = current_charity ? current_charity.twitter_handle.gsub('@', '') : 'hello'
         @charities_tweets = current_user.charities.map do |charity|
-          begin 
+          begin
             $TWITTER_CLIENT.user_timeline(charity.twitter_handle)
-          rescue 
+          rescue
           end
         end
       elsif charity_logged_in?
         @twitter_handle = current_charity ? current_charity.twitter_handle.gsub('@', '') : 'hello'
-        @charities_tweets = $TWITTER_CLIENT.user_timeline(current_charity.twitter_handle)
+        @charities_tweets = $TWITTER_CLIENT.user_timeline(current_charity.twitter_handle) rescue []
       end
 
     #this sorts the tweets
     @charities_tweets.flatten!
     @charities_tweets.compact!
-    @charities_tweets = @charities_tweets.sort_by do |tweet| 
+    @charities_tweets = @charities_tweets.sort_by do |tweet|
       tweet.created_at if tweet && tweet.created_at
-    end 
+    end
     @charities_tweets.reverse!
     @charities_tweets = @charities_tweets[0,27]
   end
