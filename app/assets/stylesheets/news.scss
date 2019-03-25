@@ -1,5 +1,4 @@
 // ========= News Feed User ==========
-
 .title {
   text-align: center;
   color: #686869;
@@ -67,14 +66,13 @@
 }
 
 .img-news-wrap {
-  display: inline;
+  display: inline-block;
 }
 
 .text-news-wrap {
-  display: inline;
+  display: inline-block;
   width: 60%;
-  margin: 1rem;
-  text-align: justify;
+  margin-left: 1rem;
 }
 
 // ============= Show post =============
