@@ -13,10 +13,8 @@ class UserSessionsController < ApplicationController
     end
   end
 
-
   def destroy
     user_log_out if user_logged_in?
     redirect_to root_url
   end
-
 end

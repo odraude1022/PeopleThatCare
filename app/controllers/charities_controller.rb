@@ -31,7 +31,6 @@ class CharitiesController < ApplicationController
 
   def create
     @charity = Charity.new(charity_params)
-    # STILL NEED SOME MORE WORK WITH PARAMS
     @categories = params[:charity][:categories]
     if @charity.save
       @categories = params[:charity][:categories]

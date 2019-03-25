@@ -101,5 +101,4 @@ class NewsPostsController < ApplicationController
   def news_post_params
     params.require(:news_post).permit(:title, :text, :url, :image, :charity_id)
   end
-
 end

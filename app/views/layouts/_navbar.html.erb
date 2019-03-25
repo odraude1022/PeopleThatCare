@@ -23,10 +23,11 @@
           <li class="nav-item">
             <%= link_to "Profile", current_user, class: "nav-link nav-display" %>
           </li>
-
+          
           <li class="nav-item">
             <%= link_to "Log out", user_logout_path, method: :delete, class: "nav-link nav-display" %>
           </li>
+         
         </ul>
       </div>
     </nav>
@@ -57,7 +58,7 @@
         <li class="nav-item">
           <%= link_to "Profile", current_charity, class: "nav-link nav-display" %>
         </li>
-
+        
         <li class="nav-item">
           <%= link_to "Log out", charity_logout_path, method: :delete, class: "nav-link nav-display" %>
         </li>

@@ -8,6 +8,10 @@
   font-size: 2.5rem;
  }
 
+.logout {
+  @include float-right;
+}
+
 .logo-home {
    width: 12rem;
    height: 3rem;

@@ -24,10 +24,10 @@ class User < ApplicationRecord
   end
 
   #Remembers a user in the database for use in persistent sessions.
- def remember
-   self.remember_token = User.new_token
-   update_attribute(:remember_digest, User.digest(remember_token))
- end
+  def remember
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(remember_token))
+  end
 
  # Returns true if the given token matches the digest.
   def authenticated?(remember_token)
@@ -43,5 +43,4 @@ class User < ApplicationRecord
   def follows?(charity)
     charities.where(id: charity.id).present?
   end
-
 end
