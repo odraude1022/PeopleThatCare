@@ -8,9 +8,11 @@
               <% if charity_logged_in? %>
                 <%= render 'button', post: post %>
               <% end %>
-              <p class="author">Author: <%= link_to post.charity.organization_name, post.charity %></p>
-                <% t = post.created_at %>
-              <p class="author">Date posted: <%= t.strftime("%m/%d/%Y at %I:%M%p")%>  </p>
+              <div class="author">
+                <p>Author: <%= link_to post.charity.organization_name, post.charity %>
+                  <% t = post.created_at %> <br>
+                  Date posted: <%= t.strftime("%m/%d/%Y at %I:%M%p")%>  </p>
+              </div>
               <div class="img-text-news-wrap">
               <div class="img-news-wrap">
                 <% if post.image.present? %>
