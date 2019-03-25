@@ -67,7 +67,7 @@ class NewsPostsController < ApplicationController
         object = LinkThumbnailer.generate(url)
         title = object.title
         image = object.images.first.src.to_s
-        text = url
+        text = object.description + "\n Follow this link to read more - " + url
       rescue
       end
       @news_post = current_charity.news_posts.new(title: title, text: text, image: image, charity_id: charity_id)

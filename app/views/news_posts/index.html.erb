@@ -22,7 +22,7 @@
                 <% end %>
               </div>
               <div class="text-news-wrap">
-                <span><%= post.text %></span>
+                <span><%= simple_format(post.text).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %></span>
               </div>
               </div>
             </li>
