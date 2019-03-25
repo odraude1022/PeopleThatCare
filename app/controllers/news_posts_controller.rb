@@ -10,7 +10,7 @@ class NewsPostsController < ApplicationController
     per_page    = 10
     total_pages = (@news_posts.count.to_f / per_page).ceil
     total_pages = 1 if total_pages.zero?
-    @news_posts = @news_posts.paginate(page: page, per_page: per_page)
+    @news_posts = @news_posts.order(created_at: :desc).paginate(page: page, per_page: per_page)
     respond_to do |format|
       format.html
       format.json do
