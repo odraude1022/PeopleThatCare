@@ -1,6 +1,6 @@
 require 'link_thumbnailer'
 require 'twitter'
-require 'time'
+
 class NewsPostsController < ApplicationController
   before_action :set_posts, only: [:index]
   before_action :set_post, only: [:destroy]
@@ -10,7 +10,7 @@ class NewsPostsController < ApplicationController
     per_page    = 10
     total_pages = (@news_posts.count.to_f / per_page).ceil
     total_pages = 1 if total_pages.zero?
-    @news_posts = @news_posts.paginate(page: page, per_page: per_page)
+    @news_posts = @news_posts.order(created_at: :desc).paginate(page: page, per_page: per_page)
     respond_to do |format|
       format.html
       format.json do
@@ -39,15 +39,10 @@ class NewsPostsController < ApplicationController
     end 
     @charities_tweets.reverse!
     @charities_tweets = @charities_tweets[0,27]
-
-    #can display a specific user's timeline
-    @user_timeline = $TWITTER_CLIENT.user_timeline("hello")
-    #@home_timeline = $TWITTER_CLIENT.home_timeline
   end
 
   def show
     @news_post = NewsPost.find(params[:id])
-    #@twitter_timeline = Twitter.new(twitter_handle)
   end
 
   def new
@@ -72,7 +67,7 @@ class NewsPostsController < ApplicationController
         object = LinkThumbnailer.generate(url)
         title = object.title
         image = object.images.first.src.to_s
-        text = url
+        text = object.description + "\n Follow this link to read more - " + url
       rescue
       end
       @news_post = current_charity.news_posts.new(title: title, text: text, image: image, charity_id: charity_id)
@@ -106,5 +101,4 @@ class NewsPostsController < ApplicationController
   def news_post_params
     params.require(:news_post).permit(:title, :text, :url, :image, :charity_id)
   end
-
 end

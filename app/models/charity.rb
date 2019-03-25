@@ -30,7 +30,6 @@ class Charity < ApplicationRecord
     }
   end
 
-
   has_secure_password
   validates :password, length: { minimum: 6 }, allow_nil: true
   # https://quickleft.com/blog/rails-tip-validating-users-with-has_secure_password/
@@ -62,16 +61,4 @@ class Charity < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
-
-  # def get_tweets
-  #   $TWITTER_CLIENT.search("from:#{self.twitter_handle}", result_type: "recent").take(5).map do |tweet|
-  #     tweet.text
-  #   end
-  # end
-
-
-  # def twitter_profile
-  #   @user_timeline = $TWITTER_CLIENT.user_timeline(self.twitter_handle)
-  # end
-  
 end

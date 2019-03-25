@@ -19,7 +19,9 @@
                 <i class="fas fa-user-minus bigger"></i>
           <%end%>
         <% end %>
-        <%= link_to "Donate Now!", new_charge_path(charity_id: @charity.id) %>
+        <div class="donate">
+          <%= link_to "Donate Now", new_charge_path(charity_id: @charity.id), class: "btn btn-success" %>
+        </div>
       <% end %>
     </div>
       <div class="info-profile">
