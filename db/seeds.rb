@@ -24,17 +24,8 @@ charity_list = [
   ["National Autistic Society", 87621523, "Larry", "nas@charity.com", "@Autism", "autism.org.uk", "password", "password"],
   ["American Cancer Society", 87621535, "Hugo", "cancer@charity.com", "@AmericanCancer", "cancer.org", "password", "password"],
   ["Ronald McDonald House Charities", 87623315, "Maria", "mhc@charity.com", "@RMHC", "rmhc.org", "password", "password"],
-  ["The Humane Society", 87622315, "Mike", "humanesociety@charity.com", "@HumaneSociety", "humanesociety.org", "password", "password"],
   ["March of Dimes", 87623415, "Sol", "marchofdimes@charity.com", "@MarchofDimes", "marchofdimes.org", "password", "password"]
 ]
-
-50.times do
-  arr = [Faker::Company.name, rand(100000000..999999999), Faker::Name.name, Faker::Internet.email]
-  arr.push("@" + arr[0].gsub(/\s+/, "").gsub(',', ''))
-  arr.push(arr[0].gsub(/\s+/, "").gsub(',', '') + ".org")
-  arr.push("password", "password")
-  charity_list.push(arr)
-end
 
 Category.destroy_all
 
@@ -68,10 +59,32 @@ end
 
 charity_category_list = []
 Charity.all.each do |charity|
-  3.times do
-    begin
-      charity_category_list.push([charity.id, Category.all.sample.id])
-    rescue
+  if charity.organization_name == "St. Jude"
+    charity_category_list.push([charity.id, (Category.find_by category_name: "Children and Family").id])
+    charity_category_list.push([charity.id, (Category.find_by category_name: "Health").id])
+    charity_category_list.push([charity.id, (Category.find_by category_name: "Research").id])
+  elsif charity.organization_name == "Unesco"
+    charity_category_list.push([charity.id, (Category.find_by category_name: "Arts and Culture").id])
+    charity_category_list.push([charity.id, (Category.find_by category_name: "Advocacy and Human Rights").id])
+    charity_category_list.push([charity.id, (Category.find_by category_name: "Education and Training").id])
+  elsif charity.organization_name == "Wounded Warrior Project"
+    charity_category_list.push([charity.id, (Category.find_by category_name: "Military and Police").id])
+  elsif charity.organization_name == "National Autistic Society"
+    charity_category_list.push([charity.id, (Category.find_by category_name: "Health").id])
+    charity_category_list.push([charity.id, (Category.find_by category_name: "Children and Family").id])
+    charity_category_list.push([charity.id, (Category.find_by category_name: "Education and Training").id])
+  elsif charity.organization_name == "American Cancer Society"
+    charity_category_list.push([charity.id, (Category.find_by category_name: "Health").id])
+    charity_category_list.push([charity.id, (Category.find_by category_name: "Research").id])
+  elsif charity.organization_name == "March of Dimes"
+    charity_category_list.push([charity.id, (Category.find_by category_name: "Children and Family").id])
+    charity_category_list.push([charity.id, (Category.find_by category_name: "Health").id])
+  else
+    3.times do
+      begin
+        charity_category_list.push([charity.id, Category.all.sample.id])
+      rescue
+      end
     end
   end
 end
