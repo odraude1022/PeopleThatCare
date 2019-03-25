@@ -1,5 +1,4 @@
 // ========= News Feed User ==========
-
 .title {
   text-align: center;
   color: #686869;
@@ -57,24 +56,26 @@
   font-size: 1rem;
 }
 
+.dateNewsPosted { 
+  font-size: 1rem;
+}
+
 .img-news-post {
   height: 200px;
   width: 200px;
 }
 
 .img-text-news-wrap {
-  display: flex
+  display: flex;
 }
 
 .img-news-wrap {
-  display: inline;
+  display: inline-block;
 }
 
 .text-news-wrap {
-  display: inline;
   width: 60%;
-  margin: 1rem;
-  text-align: justify;
+  margin-left: 1rem;
 }
 
 // ============= Show post =============
